@@ -1,0 +1,32 @@
+{
+  "name": "my-angular",
+  "version": "0.0.1",
+  "scripts": {
+    "server": "webpack-dev-server --history-api-fallback --inline --progress",
+    "start": "npm run server"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.21.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "postcss-loader": "^0.9.1",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-ui-router": "^1.0.0-alpha",
+    "xscroll": "^3.1.2"
+  }
+}
