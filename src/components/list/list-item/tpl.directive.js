@@ -11,6 +11,8 @@ const ListItemTpl = ($compile)=>({
   restrict:'A',
   link($scope,$element,$attrs){
 
+    console.log('list-item-tpl');
+
     let tpl = {
       'singleImage':singleImage,
       'multiImage':multiImage,

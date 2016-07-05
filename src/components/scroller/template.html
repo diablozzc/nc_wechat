@@ -1,10 +1,5 @@
-<div id="scroller-abc" style="height:700px;overflow: hidden;">
-    <div class="xs-container">
-
-        <section ng-transclude="body" class="xs-content"></section>
-        <section ng-transclude="pulldown" class="xs-content"></section>
-        <section ng-transclude="pullup" class="xs-content"></section>
-
-
-    </div>
+<div class="xs-container">
+    <section ng-transclude="body" class="xs-content"></section>
+    <section ng-transclude="pulldown"></section>
+    <section ng-transclude="pullup" style="position: absolute; width: 100%; height: 40px; bottom: -40px; text-align: center;"></section>
 </div>

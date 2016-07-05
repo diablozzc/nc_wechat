@@ -7,9 +7,11 @@ import controller from './controller';
 
 const ScrollerComponent = {
   bindings:{
-
+    onPullUp: '&',
+    onPullUpLoading: '&'
   },
   controller,
+  controllerAs:'scroller',
   transclude:{
     'body':'scrollerBody',
     'pulldown':'?pullDown',

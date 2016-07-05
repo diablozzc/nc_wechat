@@ -2,26 +2,83 @@
  * Created by zhangzhichao on 16/7/2.
  */
 
-import XScroll  from 'xscroll/build/cmd/xscroll';
-import Pulldown from 'xscroll/build/cmd/plugins/pulldown';
-import Pullup   from 'xscroll/build/cmd/plugins/pullup';
+import XScroll  from 'vux-xscroll/build/cmd/xscroll';
+import Pulldown from 'vux-xscroll/build/cmd/plugins/pulldown';
+import Pullup   from 'vux-xscroll/build/cmd/plugins/pullup';
 
 class ScrollerController {
-  constructor() {
+
+
+  constructor($scope,$el,$timeout) {
     this.uuid = Math.random().toString(36).substring(3, 8);
-    this.the_id = `scroller-${this.uuid}`;
-    this._xscroll = new XScroll({
-      renderTo: '#scroller-abc',
-      lockY: false
+    $el.attr('id', `scroller-${this.uuid}`);
+
+
+    const pullupDefaultConfig = () => ({
+      content: 'Pull Up To Refresh',
+      pullUpHeight: 60,
+      height: 40,
+      autoRefresh: false,
+      downContent: 'Release To Refresh',
+      upContent: 'Pull Up To Refresh',
+      loadingContent: 'Loading...',
+      clsPrefix: 'xs-plugin-pullup-'
     });
-    this._xscroll.render();
+
+
+
+    this._xscroll = new XScroll({
+      renderTo: `#scroller-${this.uuid}`,
+      lockY: false,
+      scrollbarX:false,
+      scrollbarY:false
+    });
+
+    let pull_container = $el[0].querySelector('section[ng-transclude="pullup"]');
+    let pull_up_config = pullupDefaultConfig();
+
+    pull_up_config.container = pull_container;
+
+    this.pullup = new Pullup(pull_up_config);
+    this._xscroll.plug(this.pullup);
+
+    this.pullup.on('statuschange',(val)=>{
+      this.onPullUp({
+        $event: {
+          status:val.newVal
+        }
+      });
+      $scope.$apply();
+
+    });
+
+    this.pullup.on('loading', () => {
+      this.onPullUpLoading();
+      $scope.$apply();
+    });
+
+
+    $timeout(()=>{
+      this._xscroll.render();
+    });
+
+    $scope.$on('pullup:reset',(e)=>{
+      this.pullup.complete();
+      this.reset()
+    });
+
   }
+
+
   $onInit() {
 
   };
 
+  reset(){
+    this._xscroll && this._xscroll.render();
+  }
 }
 
-ScrollerController.$inject = [];
+ScrollerController.$inject = ['$scope','$element','$timeout'];
 
 export default ScrollerController;

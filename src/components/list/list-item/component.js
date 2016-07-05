@@ -8,8 +8,7 @@ const ListItemComponent = {
     itemData:'<',
     tpl:'@'
   },
-  template:require('./template.html'),
-  replace:true
+  template:require('./template.html')
 };
 
 export default ListItemComponent;

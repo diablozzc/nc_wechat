@@ -4,6 +4,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import NewsComponent from './component';
+import './style.less';
 
 const news = angular
   .module('news',[

@@ -3,7 +3,6 @@
  */
 class ActionBarController {
   constructor() {
-
   }
   $onInit() {
     
@@ -11,6 +10,6 @@ class ActionBarController {
 
 }
 
-ActionBarController.$inject = [];
+ActionBarController.$inject = ['$scope','$element'];
 
 export default ActionBarController;
