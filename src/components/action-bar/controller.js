@@ -8,6 +8,10 @@ class ActionBarController {
     
   }
 
+  onClickBack(){
+    history.back();
+  }
+
 }
 
 ActionBarController.$inject = ['$scope','$element'];

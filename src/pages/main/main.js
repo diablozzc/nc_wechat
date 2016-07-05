@@ -5,11 +5,13 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import MainComponent from './main.component';
 import News from './news';
+import NewsContent from './news-content';
 
 const main = angular
   .module('main',[
     uiRouter,
-    News
+    News,
+    NewsContent
   ])
   .component('main',MainComponent)
   .config(($stateProvider,$urlRouterProvider)=>{

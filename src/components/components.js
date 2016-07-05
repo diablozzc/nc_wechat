@@ -5,12 +5,14 @@ import angular from 'angular';
 import actionBar from './action-bar';
 import scroller from './scroller';
 import list from './list';
+import articleContent from './article-content';
 
 const components = angular
   .module('app.components',[
     actionBar,
     scroller,
-    list
+    list,
+    articleContent
   ])
   .name;
 

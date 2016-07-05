@@ -7,7 +7,7 @@ import imageText   from './tpl.imageText.html';
 import text        from './tpl.text.html';
 import video       from './tpl.video.html';
 
-const ListItemTpl = ($compile)=>({
+const ListItemTpl = ($state,$compile)=>({
   restrict:'A',
   link($scope,$element,$attrs){
 
@@ -20,6 +20,7 @@ const ListItemTpl = ($compile)=>({
       'text':text,
       'video':video
     };
+
     
     $element.html(tpl[$attrs.listItemTpl]);
     $compile($element.contents())($scope);
@@ -27,6 +28,6 @@ const ListItemTpl = ($compile)=>({
   }
 });
 
-ListItemTpl.$inject = ['$compile'];
+ListItemTpl.$inject = ['$state','$compile'];
 
 export default ListItemTpl;
