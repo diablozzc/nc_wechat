@@ -4,7 +4,7 @@
 import controller from './controller';
 const ArticleContentComponent = {
   bindings:{
-
+    theArticle:'<'
   },
   controller,
   template:require('./template.html')

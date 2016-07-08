@@ -6,7 +6,7 @@ import controller from './controller';
 
 const NewsComponent = {
   controller,
-  controllerAs:'newsContent',
+  controllerAs:'theNews',
   template:require('./template.html')
 };
 

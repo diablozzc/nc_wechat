@@ -1,21 +1,17 @@
 <div class="article-content-page">
 
-    <article-content></article-content>
+    <article-content the-article="theNews.theArticle"></article-content>
 
-    <comment>
-        <comment-item>
+    <comment list-data="theNews.listOfComment" id="article_comment" on-load-more="theNews.loadMoreComment()">
 
-        </comment-item>
     </comment>
 
-    <toolbar>
+    <bottom-bar on-click="theNews.showCommentForm()">
 
-    </toolbar>
+    </bottom-bar>
 
-    <pop-up>
-        <comment-form>
-
-        </comment-form>
-    </pop-up>
+    <popup show="theNews.showPopup" height="140px" on-close-popup="theNews.onCloseComment()">
+        <comment-form on-cancel="theNews.onCloseComment()"></comment-form>
+    </popup>
 
 </div>

@@ -1,0 +1,25 @@
+<form name="comment_form" ng-submit="$ctrl.sendComment()">
+
+    <div class="vux-flexbox vux-flex-row">
+        <div class="vux-flexbox-item"
+             style="text-align: left; padding-left: 15px; line-height: 44px; margin-left: 8px;">
+            <button type="button"
+                    class="weui_btn weui_btn_mini weui_btn_default"
+                    ng-click="$ctrl.cancelComment()">取消</button>
+        </div>
+        <div class="vux-flexbox-item" style="text-align: right; padding-right: 15px; line-height: 44px; margin-left: 8px;">
+            <button type="submit" class="weui_btn weui_btn_mini weui_btn_primary"
+                    ng-disabled="comment_form.$invalid"
+                    ng-class="{'weui_btn_disabled':comment_form.$invalid}">发送</button>
+        </div>
+    </div>
+
+
+    <xtextarea max="200"
+               value="$ctrl.comment_content"
+               name="comment_content"
+               placeholder="我也说两句"
+               rows="3"
+               height="50px"></xtextarea>
+
+</form>

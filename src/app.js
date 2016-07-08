@@ -9,6 +9,7 @@ import Components from './components/components';
 
 import './styles/weui/weui.less';
 import './styles/main.less';
+import 'font-awesome/css/font-awesome.css';
 
 
 const root = angular

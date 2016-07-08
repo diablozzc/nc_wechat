@@ -1,0 +1,16 @@
+<div class="weui_cell">
+    <div class="weui_cell_bd weui_cell_primary">
+        <textarea class="weui_textarea"
+                  placeholder="{{$ctrl.placeholder}}"
+                  name="{{$ctrl.name}}"
+                  rows="{{$ctrl.rows}}"
+                  cols="{{$ctrl.cols}}"
+                  ng-model="$ctrl.value"
+                  ng-style="$ctrl.textareaStyle"
+                  maxlength="{{$ctrl.max}}"
+                  required></textarea>
+        <div class="weui_textarea_counter" ng-show="$ctrl.showCounter && $ctrl.max">
+            <span>{{$ctrl.count}}</span>/{{$ctrl.max}}
+        </div>
+    </div>
+</div>

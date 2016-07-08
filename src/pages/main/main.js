@@ -14,7 +14,10 @@ const main = angular
     NewsContent
   ])
   .component('main',MainComponent)
-  .config(($stateProvider,$urlRouterProvider)=>{
+  .config(($stateProvider,$urlRouterProvider,$locationProvider)=>{
+    $locationProvider.html5Mode(false);
+    $locationProvider.hashPrefix('!');
+
     $stateProvider
       .state('main',{
         abstract:true,

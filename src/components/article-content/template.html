@@ -1,40 +1,31 @@
 <article id="pageletArticleContent" class="box">
+
+    <div class="video-wrapper" style="background-image: none;">
+        <div class="tt-video-box" style="margin: 0px auto;">
+            <video ng-src="{{$ctrl.theArticle.videoUrl}}"
+                   type="video/mp4" controls
+                   poster="{{$ctrl.theArticle.coverUrl}}" preload="none" webkit-playsinline
+                   style="width:100%;"></video>
+        </div>
+    </div>
+
+
     <div class="article-detail">
-        <h1 class="title">为什么中国国产航母飞行甲板即将完工？但军事专家却高兴不起来</h1>
-        <div class="pgc-bar-top clearfix" data-node="titleCtn" data-user-id="4087561186">
-            <a href="#" ga_category="toutiaohao" ga_label="" ga_event="click" class="avatar-link vwo-media-profile">
-                <div class="avatar">
-                    <img src="http://p2.pstatp.com/large/2490/8039334854" class="avatar" alt="图说军事">
-                </div>
-            </a>
-            <div class="subtitle">
-                <p class="name"><a href="#" ga_category="toutiaohao" ga_label="" ga_event="click" class="screen-name vwo-media-profile">图说军事<img src="//s3a.pstatp.com/growth/webroot/resource/growth/mobile_detail/static/image/toutiaohao_details@3x_68a7543.png">
-                </a></p>
-                <a href="#" class="time vwo-media-profile" ga_category="toutiaohao" ga_label="" ga_event="click">
-                    <span class="original">原创</span>
-                    <span>7-5 15:51</span>
-                </a>
-            </div>
+
+        <h1 class="title">{{$ctrl.theArticle.title}}</h1>
+        <div class="rich_media_meta_list">
+            <em id="post-date" class="rich_media_meta rich_media_meta_text">{{$ctrl.theArticle.publishTime}}</em>
+            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">{{$ctrl.theArticle.source}}</span>
         </div>
-        <div class="article-content" style="">
-            <div>
-                <p class="img-wrapper-embedded" style="width: 100%;"><img src="http://p1.pstatp.com/large/9aa0004d8f0b8b5ad9a" img_width="900" img_height="578" alt="为什么中国国产航母飞行甲板即将完工？但军事专家却高兴不起来" onerror="javascript:errorimg.call(this);" data-index="0"></p>
-                <p><span>近日，中国自行建造的第一艘航母飞行甲板接近铺设完成，这也就意味着，中国海军即将步入拥有真正意义作战能力的航母战斗群的“双航母编队”时代。</span><span>众所周知，只有一艘航母是无法形成真正意义的战斗力的，像所有的大型武器装备一样，军舰需要维护，像航母这样大的军舰与其把它想象成一件武器，还不如把它看成一座城市更符合实际情况。把一座战斗城市开进船坞做一次维护保养要耗去几个月甚至一两年的时间，如果没有另一条航母轮换，那么等于这个时间这支海军就完全没有可用的航母。</span></p>
-                <p><strong><span>【鹰眼图说军事 鹰眼快评栏目第712期】也正因为如此，我国才在改装“瓦良格”号为“辽宁”舰之后，又建造了国产新型航母，其基本可以视作是“辽宁”舰的国产化版本。这艘纯国产航母未来服役后到底会意味着什么呢？</span></strong><span>我们知道，雷达波走的是直线，而地球是个球形，这也就意味着雷达的搜索距离是受地表曲率限制的，不管多么强大的雷达都逃不出这个基本规律。中国海军的346型雷达是如此，日本海上自卫队的SPY-1D同样是如此。</span></p>
-                <p class="img-wrapper" style="width: 100%; "><img src="http://p3.pstatp.com/large/9df0002f657eea6536f" img_width="900" img_height="571" alt="为什么中国国产航母飞行甲板即将完工？但军事专家却高兴不起来" onerror="javascript:errorimg.call(this);" data-index="1"></p>
-                <p><span>不管装备了多强大的防空导弹，面对来自水天线以外的威胁，都一样只能等着敌人进入视距再说。而能够改变这一切的，就只有航母。</span><span>首先，航母搭载有舰载机，舰载机的作用不止是攻击，同时还有侦察能力。第三代战斗机的雷达普遍有上百公里的有效探测距离，围绕编队上空飞侦察航线也能覆盖相当的海域，保证编队的空中安全，不携带预警机的航母编队一样拥有比非航母战斗编队更加广阔的信息感知范围，能够知道敌人在哪儿，这是航母编队最大的优势。</span></p>
-                <p>其次，航母能够起降预警机，把雷达站搬到天上，这样位于数千米高度的预警机，就可以很方便的突破水天线限制，让航母编队的雷达触角直接延伸到数百公里之外。<span>再次就是打击能力，一艘驱逐舰最多也就能携带十几枚反舰导弹，而像“辽宁”舰则能携带24架重型舰载战斗机，一次全甲板攻击可以投射数十枚反舰导弹，火力密度远强于一支普通的驱护舰编队，而且打击半径更大，更加灵活。</span></p>
-                <p class="img-wrapper" style="width: 100%; "><img src="http://p3.pstatp.com/large/9aa0004d952b367b78c" img_width="900" img_height="600" alt="为什么中国国产航母飞行甲板即将完工？但军事专家却高兴不起来" onerror="javascript:errorimg.call(this);" data-index="2"></p>
-                <p><span>可以说，有航母和没航母，海军战斗力不亚于天壤之别，不过，军事专家雷泽表示，中国国产航母的建造速度惊人，工程进展让人高兴，但我们必须清醒的认识到，目前正在建造的中国航母没有安装弹射器，不能进行高效率的重载起飞，对舰载战斗机进行远程反舰作战的影响很大，特别是几十吨重的大型固定翼舰载预警机必须通过弹射起飞才能在航母上起降，而目前，辽宁舰和国产新航母都只能装备直升机预警机，与美军航母的差距拉大，中国未来的航母还需要继续努力。</span></p>
-                <p><strong>鹰眼图说军事，用图说军事的自媒体，认认真真做军事原创，我们让事实说话，请关注我们的公众号：tsjunshi81（长按可复制）</strong></p>
-            </div>
-            <p class="footnote">本文为头条号作者原创。未经授权，不得转载。</p>
+        <div class="article-content" style="" ng-bind-html="$ctrl.theArticle.content">
+
         </div>
-        <div class="unfold-field" style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
-            <a href="javascript:void(0)" class="text-link unfold-btn vwo-unfold" ga_category="article" ,="" ga_label="" ga_event="unfold">
-                <p>展开全文<span></span></p>
-            </a>
-        </div>
-        <div id="pageletRecommendGallery"></div>
+        <!--<div class="unfold-field"-->
+             <!--style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">-->
+            <!--<a href="javascript:;" class="text-link unfold-btn vwo-unfold" ga_category="article" ,="" ga_label=""-->
+               <!--ga_event="unfold">-->
+                <!--<p>展开全文<span></span></p>-->
+            <!--</a>-->
+        <!--</div>-->
     </div>
 </article>

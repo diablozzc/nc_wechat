@@ -8,10 +8,7 @@ class ArticleContentController {
   $onInit() {
 
   }
-
-  onClickBack(){
-    history.back();
-  }
+  
 
 }
 

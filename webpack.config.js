@@ -8,6 +8,7 @@ var autoprefixer      = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+// var FontAwesomeWebpack = require("font-awesome-webpack");
 
 module.exports = function makeWebpackConfig(){
   var config = {};
@@ -39,6 +40,12 @@ module.exports = function makeWebpackConfig(){
       },{
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
         loader: 'file'
+      },{
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&minetype=application/font-woff"
+      },{
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
       },{
         test: /\.html$/,
         loader: 'raw'

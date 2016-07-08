@@ -1,0 +1,39 @@
+<div class="weui_search_bar" id="search_bar" style="
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+">
+
+    <!--<a href="javascript:" class="weui_search_cancel" id="search_cancel">cancel</a>-->
+
+    <div class="vux-flexbox vux-flex-row">
+        <div class="vux-flexbox-item"
+             style="margin-left: 8px; flex: 0 0 8%; text-align: center"
+             ng-click="$ctrl.goBack()">
+            <i class="fa fa-angle-left fa-2x" style="color:#555;"></i>
+        </div>
+
+
+        <div class="vux-flexbox-item" style="margin-left: 8px;">
+
+
+            <form class="weui_search_outer" ng-click="$ctrl.takeComment()">
+                <div class="weui_search_inner" style="padding-left: 10px;">
+                    <input type="text" class="weui_search_input"
+                           id="search_input" autocomplete="off"
+                           required="" placeholder="写评论..." disabled>
+                    <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+                </div>
+            </form>
+
+
+        </div>
+        <div class="vux-flexbox-item"
+             style="margin-left: 8px; flex: 0 0 12.5%; text-align: center"
+             ng-click="$ctrl.goComment()">
+            <i class="fa fa-comments-o fa-2x" style="color:#555;"></i>
+            <span class="vux-badge comment-badge">199</span>
+        </div>
+    </div>
+
+</div>
