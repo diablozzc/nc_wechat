@@ -2,7 +2,8 @@
   "name": "my-angular",
   "version": "0.0.1",
   "scripts": {
-    "server": "webpack-dev-server --history-api-fallback --inline --progress",
+    "build": "rimraf dist && webpack --bail --progress --profile",
+    "server": "webpack-dev-server --history-api-fallback --inline --progress --hot",
     "start": "npm run server"
   },
   "devDependencies": {
@@ -18,6 +19,7 @@
     "html-webpack-plugin": "^2.21.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "npm-install-webpack-plugin": "^4.0.4",
     "postcss-loader": "^0.9.1",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",

@@ -11,8 +11,9 @@ class ScrollerController {
 
   constructor($scope,$el,$timeout) {
     this.uuid = Math.random().toString(36).substring(3, 8);
-    $el.attr('id', `scroller-${this.uuid}`);
 
+    let p = $el[0].querySelector('.xs-container').parentNode;
+    p.setAttribute('id',`scroller-${this.uuid}`);
 
     const pullupDefaultConfig = () => ({
       content: 'Pull Up To Refresh',
@@ -49,34 +50,48 @@ class ScrollerController {
         }
       });
       $scope.$apply();
-
     });
 
     this.pullup.on('loading', () => {
       this.onPullUpLoading();
       $scope.$apply();
     });
-
-
+    
     $timeout(()=>{
       this._xscroll.render();
     });
 
     $scope.$on('pullup:reset',(e)=>{
       this.pullup.complete();
-      this.reset()
+      this.reset();
+      this.onPullUp({
+        $event: {
+          status:'default'
+        }
+      });
+    });
+
+    $scope.$on('scroller:reset',(e)=>{
+      this.reset();
+      this._xscroll.scrollTop(0,0);
     });
 
   }
 
 
   $onInit() {
-
+    console.log(this.height);
   };
 
   reset(){
     this._xscroll && this._xscroll.render();
   }
+
+
+  computeStyle() {
+    return {'height':`${this.height}px`};
+
+  };
 }
 
 ScrollerController.$inject = ['$scope','$element','$timeout'];

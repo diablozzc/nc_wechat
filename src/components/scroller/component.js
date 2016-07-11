@@ -7,6 +7,7 @@ import controller from './controller';
 
 const ScrollerComponent = {
   bindings:{
+    height:'<',
     onPullUp: '&',
     onPullUpLoading: '&'
   },

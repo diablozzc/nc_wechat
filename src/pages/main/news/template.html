@@ -1,6 +1,10 @@
-<action-bar title="小区新闻"></action-bar>
+<action-bar title="小区新闻">
+    <right-btn ng-click="news.goSearch()">
+        <i class="fa fa-search" style="font-size:18px"></i>
+    </right-btn>
+</action-bar>
 
-<scroller style="height:621px;" class="bd" on-pull-up="news.pullUp($event)" on-pull-up-loading="news.loadMoreNews()">
+<scroller height="news.scrollerHeight" class="bd" on-pull-up="news.pullUp($event)" on-pull-up-loading="news.loadMoreNews()">
     <scroller-body>
         <list>
             <list-item ng-repeat="item in news.listOfNews"

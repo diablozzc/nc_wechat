@@ -11,6 +11,7 @@ import bottomBar from './bottom-bar';
 import Popup from './popup';
 import xTextarea from './x-textarea';
 import commentForm from './comment-form';
+import search from './search';
 
 const components = angular
   .module('app.components',[
@@ -22,7 +23,8 @@ const components = angular
     bottomBar,
     Popup,
     xTextarea,
-    commentForm
+    commentForm,
+    search
   ])
   .name;
 

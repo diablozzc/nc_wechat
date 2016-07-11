@@ -8,6 +8,8 @@ var autoprefixer      = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var NpmInstallPlugin  = require('npm-install-webpack-plugin');
+
 // var FontAwesomeWebpack = require("font-awesome-webpack");
 
 module.exports = function makeWebpackConfig(){
@@ -66,7 +68,8 @@ module.exports = function makeWebpackConfig(){
       template: './src/index.html',
       inject: 'body'
     }),
-    new ExtractTextPlugin('[name].[hash].css')
+    new ExtractTextPlugin('[name].[hash].css'),
+    new NpmInstallPlugin()
   );
 
   config.devServer = {

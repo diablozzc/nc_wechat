@@ -6,12 +6,14 @@ import uiRouter from 'angular-ui-router';
 import MainComponent from './main.component';
 import News from './news';
 import NewsContent from './news-content';
+import NewsSearch from './news-search';
 
 const main = angular
   .module('main',[
-    uiRouter,
-    News,
-    NewsContent
+    uiRouter
+    ,News
+    ,NewsContent
+    ,NewsSearch
   ])
   .component('main',MainComponent)
   .config(($stateProvider,$urlRouterProvider,$locationProvider)=>{

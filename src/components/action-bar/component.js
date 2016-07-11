@@ -5,9 +5,11 @@
 import controller from './controller';
 const ActionBarComponent = {
   bindings:{
-    leftBtn:'<',
     title:'@',
-    rightBtn:'<'
+  },
+  transclude:{
+    'leftBtn':'?leftBtn',
+    'rightBtn':'?rightBtn'
   },
   controller,
   template:require('./template.html')

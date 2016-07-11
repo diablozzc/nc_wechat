@@ -6,9 +6,7 @@ const ListComponent = {
 
   },
   transclude:{
-    'item':'listItem',
-    'pulldown':'?pullDown',
-    'pullup':'?pullUp'
+    'item':'listItem'
   },
   template:require('./template.html')
 };

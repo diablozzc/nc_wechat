@@ -1,0 +1,18 @@
+<div class="vux-search-box">
+    <div class="weui_search_bar" id="search_bar" ng-class="{'weui_search_focusing': !search.isCancel}">
+        <form class="weui_search_outer" ng-submit="search.search()" name="search_form">
+            <div class="vux-search-mask" ng-click="search.touch()" ng-show="!search.isFixed"></div>
+            <div class="weui_search_inner">
+                <i class="weui_icon_search"></i>
+                <input type="text" class="weui_search_input"
+                       id="search_input" placeholder="{{search.placeholder}}" autocomplete="off" required ng-model="search.value" ng-model-options="{ debounce: 500 }" />
+                <a href="javascript:" class="weui_icon_clear" id="search_clear" ng-click="search.clear()"></a>
+            </div>
+            <label for="search_input" class="weui_search_text" id="search_text">
+                <i class="weui_icon_search"></i>
+                <span>{{search.placeholder}}</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui_search_cancel" id="search_cancel" ng-click="search.cancel()">{{search.cancelText}}</a>
+    </div>
+</div>

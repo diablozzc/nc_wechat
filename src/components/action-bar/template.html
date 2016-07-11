@@ -1,9 +1,9 @@
 <div class="x-header">
-    <div class="x-header-left">
+    <div class="x-header-left" ng-transclude="leftBtn">
         <a class="x-header-back" ng-click="$ctrl.onClickBack()"></a>
     </div>
     <h1 class="x-header-title">{{$ctrl.title}}</h1>
-    <div class="x-header-right">
+    <div class="x-header-right" ng-transclude="rightBtn">
         <a class="x-header-more"></a>
     </div>
 </div>
