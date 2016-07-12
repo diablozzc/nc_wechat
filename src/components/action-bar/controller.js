@@ -2,6 +2,7 @@
  * Created by zhangzhichao on 16/6/30.
  */
 class ActionBarController {
+  /*@ngInject*/
   constructor() {
   }
   $onInit() {
@@ -13,7 +14,5 @@ class ActionBarController {
   }
 
 }
-
-ActionBarController.$inject = ['$scope','$element'];
 
 export default ActionBarController;

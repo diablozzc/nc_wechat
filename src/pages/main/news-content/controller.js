@@ -3,11 +3,10 @@
  */
 import Moment from 'moment';
 class NewsContentController {
+  /*@ngInject*/
   constructor($scope,$element,$timeout,$state,$stateParams,$sce) {
     this.prev = $state.current.data.prev;
     this.sce = $sce;
-
-    
   }
   $onInit() {
     this.theArticle = {
@@ -73,5 +72,5 @@ class NewsContentController {
 
 
 
-NewsContentController.$inject = ['$scope','$element','$timeout','$state','$stateParams','$sce'];
+// NewsContentController.$inject = ['$scope','$element','$timeout','$state','$stateParams','$sce'];
 export default NewsContentController;

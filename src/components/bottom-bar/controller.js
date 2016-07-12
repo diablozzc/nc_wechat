@@ -3,6 +3,7 @@
  */
 
 class BottomBarController {
+  /*@ngInject*/
   constructor($scope,$element,$anchorScroll,$location) {
     this.$anchorScroll = $anchorScroll;
   }
@@ -22,7 +23,5 @@ class BottomBarController {
   }
   
 }
-
-BottomBarController.$inject = ['$scope','$element','$anchorScroll','$location'];
 
 export default BottomBarController;

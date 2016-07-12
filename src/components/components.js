@@ -12,6 +12,7 @@ import Popup from './popup';
 import xTextarea from './x-textarea';
 import commentForm from './comment-form';
 import search from './search';
+import hotKeyword from './hot-keyword';
 
 const components = angular
   .module('app.components',[
@@ -24,7 +25,8 @@ const components = angular
     Popup,
     xTextarea,
     commentForm,
-    search
+    search,
+    hotKeyword
   ])
   .name;
 

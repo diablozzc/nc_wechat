@@ -2,6 +2,7 @@
  * Created by zhangzhichao on 16/7/6.
  */
 class CommentController {
+  /*@ngInject*/
   constructor($scope,$element) {
   }
 
@@ -13,7 +14,5 @@ class CommentController {
   }
 
 }
-
-CommentController.$inject = ['$scope','$element'];
 
 export default CommentController;

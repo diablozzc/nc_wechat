@@ -3,6 +3,7 @@
  */
 
 class CommentFormController {
+  /*@ngInject*/
   constructor($scope,$element) {
   }
 
@@ -20,6 +21,5 @@ class CommentFormController {
 
 }
 
-CommentFormController.$inject = ['$scope','$element'];
 
 export default CommentFormController;

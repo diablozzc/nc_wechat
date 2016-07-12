@@ -12,12 +12,14 @@ const news = angular
   ])
   .component('news',NewsComponent)
   .config(($stateProvider)=>{
+    'ngInject';
     $stateProvider
       .state('main.news',{
-        url:'/news',
+        url:'/news?s',
         component:'news'
       });
   })
   .name;
+
 
 export default news;

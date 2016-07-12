@@ -7,10 +7,10 @@
         placeholder="搜索"
         cancel-text="取消"></search>
 
-<!--<hot-keyword></hot-keyword>-->
+<hot-keyword keywords="newsSearch.listOfKeyword" on-select="newsSearch.searchKeyword($event)" ng-show="!newsSearch.keyword"></hot-keyword>
 
 
-<scroller class="bd" height="newsSearch.scrollerHeight" on-pull-up="newsSearch.pullUp($event)" on-pull-up-loading="newsSearch.loadMoreSearch()">
+<scroller class="bd" height="newsSearch.scrollerHeight" on-pull-up="newsSearch.pullUp($event)" on-pull-up-loading="newsSearch.loadMoreSearch()" ng-show="newsSearch.keyword">
     <scroller-body>
         <list>
             <list-item ng-repeat="item in newsSearch.listOfSearch"

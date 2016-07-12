@@ -13,9 +13,10 @@ const news_search = angular
   ])
   .component('newsSearch',NewsSearchComponent)
   .config(($stateProvider)=>{
+    'ngInject';
     $stateProvider
       .state('main.news_search',{
-        url:'/news_search',
+        url:'/news_search?s',
         component:'newsSearch',
         data:{
           prev:'main.news'

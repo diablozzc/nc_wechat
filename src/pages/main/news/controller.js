@@ -3,6 +3,7 @@
  */
   
 class NewsController {
+  /*@ngInject*/
   constructor($scope,$element,$timeout,$state) {
     console.log('1.news constructor');
     this.scope = $scope;
@@ -58,5 +59,5 @@ class NewsController {
 
 }
 
-NewsController.$inject = ['$scope','$element','$timeout','$state'];
+// NewsController.$inject = ['$scope','$element','$timeout','$state'];
 export default NewsController;

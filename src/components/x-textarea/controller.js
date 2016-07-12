@@ -3,6 +3,7 @@
  */
 
 class XTextareaController {
+  /*@ngInject*/
   constructor($scope,$element) {
 
   }
@@ -17,6 +18,6 @@ class XTextareaController {
 
 }
 
-XTextareaController.$inject = ['$scope','$element'];
+// XTextareaController.$inject = ['$scope','$element'];
 
 export default XTextareaController;

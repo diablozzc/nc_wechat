@@ -3,6 +3,7 @@
  */
 
 class ArticleContentController {
+  /*@ngInject*/
   constructor() {
   }
   $onInit() {
@@ -11,7 +12,5 @@ class ArticleContentController {
   
 
 }
-
-ArticleContentController.$inject = ['$scope','$element'];
 
 export default ArticleContentController;

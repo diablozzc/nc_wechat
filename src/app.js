@@ -20,4 +20,5 @@ const root = angular
   ])
   .component('app',AppComponent);
 
+
 export default root;

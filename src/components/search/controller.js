@@ -2,14 +2,20 @@
  * Created by zhangzhichao on 16/7/8.
  */
 class SearchController {
+  /*@ngInject*/
   constructor($scope,$element) {
     this.input = $element[0].querySelector('#search_input');
 
-    $scope.$watch('search.value',(data)=>{
+    $scope.$watch('search.value',(new_keyword,old_keyword)=>{
       this.onChange(
         {$event:{
-          keyword:data
+          keyword:new_keyword
         }});
+      if(old_keyword === '' && new_keyword.length>0){
+        this.touch()
+      }
+
+
     })
   }
 
@@ -54,6 +60,6 @@ class SearchController {
 
 }
 
-SearchController.$inject = ['$scope','$element'];
+// SearchController.$inject = ['$scope','$element'];
 
 export default SearchController;

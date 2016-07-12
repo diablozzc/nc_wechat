@@ -3,6 +3,7 @@
  */
 
 class NewsSearchController {
+  /*@ngInject*/
   constructor($scope,$element,$timeout,$state) {
     this.timeout = $timeout;
     this.scope = $scope;
@@ -13,6 +14,22 @@ class NewsSearchController {
 
     this.keyword = '';
     this.listOfSearch = [
+    ];
+
+    this.listOfKeyword = [
+      '热词1',
+      '热词2',
+      '热词3',
+      '热词4',
+      '热词5',
+      '热词6',
+      '热词7',
+      '热词833',
+      '热词9',
+      '热词10',
+      '热词11',
+      '热词12',
+      '热词13',
     ];
 
     this.pullupStatus = 'default';
@@ -52,7 +69,7 @@ class NewsSearchController {
   }
 
   pullUp({status}){
-    console.log(status);
+    // console.log(status);
     this.pullupStatus = status;
   }
 
@@ -65,9 +82,13 @@ class NewsSearchController {
     },500);
 
   }
+  
+  searchKeyword({keyword}){
+    this.keyword = keyword;
+  }
 
   
 }
 
-NewsSearchController.$inject = ['$scope','$element','$timeout','$state'];
+// NewsSearchController.$inject = ['$scope','$element','$timeout','$state'];
 export default NewsSearchController;

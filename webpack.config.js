@@ -9,8 +9,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var NpmInstallPlugin  = require('npm-install-webpack-plugin');
+var ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
 
-// var FontAwesomeWebpack = require("font-awesome-webpack");
+var ENV = process.env.npm_lifecycle_event;
+var isTest = ENV === 'test' || ENV === 'test-watch';
+var isProd = ENV === 'build';
+console.log('ENV:',ENV);
 
 module.exports = function makeWebpackConfig(){
   var config = {};
@@ -21,12 +25,20 @@ module.exports = function makeWebpackConfig(){
 
   config.output = {
     path: __dirname + '/dist',
-    publicPath: 'http://localhost:8080/',
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js'
+    // publicPath: 'http://localhost:8080/',
+    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    // filename: '[name].bundle.js',
+    filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
+    // chunkFilename: '[name].bundle.js'
+    chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
   };
 
-  config.devtool = 'eval-source-map';
+  if (isProd) {
+    config.devtool = 'source-map';
+  } else {
+    config.devtool = 'eval-source-map';
+  }
+
 
   config.module = {
     loaders:[{
@@ -69,8 +81,35 @@ module.exports = function makeWebpackConfig(){
       inject: 'body'
     }),
     new ExtractTextPlugin('[name].[hash].css'),
-    new NpmInstallPlugin()
+    new NpmInstallPlugin(),
+    new ngAnnotatePlugin({
+      add: true
+    })
+
   );
+
+
+  if (isProd) {
+    config.plugins.push(
+      // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
+      // Only emit files when there are no errors
+      new webpack.NoErrorsPlugin(),
+
+      // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
+      // Dedupe modules in the output
+      new webpack.optimize.DedupePlugin(),
+
+      // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
+      // Minify all javascript, switch loaders to minimizing mode
+      new webpack.optimize.UglifyJsPlugin(),
+
+      // Copy assets from the public folder
+      // Reference: https://github.com/kevlened/copy-webpack-plugin
+      new CopyWebpackPlugin([{
+        from: __dirname + '/src/public'
+      }])
+    )
+  }
 
   config.devServer = {
     contentBase: './src',

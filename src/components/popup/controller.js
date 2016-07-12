@@ -5,6 +5,7 @@
 import Popup from './popup';
 
 class PopupController {
+  /*@ngInject*/
   constructor($scope,$element) {
 
     this.$el = $element[0].querySelector('.vux-popup');
@@ -50,6 +51,6 @@ class PopupController {
 
 }
 
-PopupController.$inject = ['$scope','$element'];
+// PopupController.$inject = ['$scope','$element'];
 
 export default PopupController;

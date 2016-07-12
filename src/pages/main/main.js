@@ -17,6 +17,7 @@ const main = angular
   ])
   .component('main',MainComponent)
   .config(($stateProvider,$urlRouterProvider,$locationProvider)=>{
+    'ngInject';
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('!');
 
@@ -29,5 +30,6 @@ const main = angular
     $urlRouterProvider.otherwise('/');
   })
   .name;
+
 
 export default main;

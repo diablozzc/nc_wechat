@@ -13,14 +13,22 @@ const news_content = angular
   ])
   .component('newsContent',NewsContentComponent)
   .config(($stateProvider)=>{
+    'ngInject';
     $stateProvider
       .state('main.news.news_content',{
-        url:'/:itemId',
+        url:'/:itemId?s',
         component:'newsContent',
         data:{
           prev:'main.news'
         }
-      });
+      })
+      .state('main.news_search.news_content',{
+        url:'/:itemId?s',
+        component:'newsContent',
+        data:{
+          prev:'main.news_search'
+        }
+      })
   })
   .name;
 

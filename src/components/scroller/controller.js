@@ -8,11 +8,10 @@ import Pullup   from 'vux-xscroll/build/cmd/plugins/pullup';
 
 class ScrollerController {
 
-
-  constructor($scope,$el,$timeout) {
+  constructor($scope,$element,$timeout) {
     this.uuid = Math.random().toString(36).substring(3, 8);
 
-    let p = $el[0].querySelector('.xs-container').parentNode;
+    let p = $element[0].querySelector('.xs-container').parentNode;
     p.setAttribute('id',`scroller-${this.uuid}`);
 
     const pullupDefaultConfig = () => ({
@@ -35,7 +34,7 @@ class ScrollerController {
       scrollbarY:false
     });
 
-    let pull_container = $el[0].querySelector('section[ng-transclude="pullup"]');
+    let pull_container = $element[0].querySelector('section[ng-transclude="pullup"]');
     let pull_up_config = pullupDefaultConfig();
 
     pull_up_config.container = pull_container;
