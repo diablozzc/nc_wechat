@@ -6,7 +6,8 @@
 const ListItemComponent = {
   bindings:{
     itemData:'<',
-    tpl:'@'
+    tpl:'@',
+    target:'<'
   },
   template:require('./template.html')
 };

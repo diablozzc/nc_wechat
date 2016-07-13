@@ -77,9 +77,7 @@ class ScrollerController {
 
   }
 
-
   $onInit() {
-    console.log(this.height);
   };
 
   reset(){

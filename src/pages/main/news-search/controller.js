@@ -4,13 +4,20 @@
 
 class NewsSearchController {
   /*@ngInject*/
-  constructor($scope,$element,$timeout,$state) {
+  constructor($scope,$element,$timeout,$state,$resource,NewsSearchService,Models) {
     this.timeout = $timeout;
     this.scope = $scope;
+    this.news_service = NewsSearchService;
+    this.Models = Models;
   }
   $onInit() {
+    console.log('load api news');
+    this.Models.init('Api').actions('news').then((ret)=>{
+      console.log(ret);
+    });
 
-    this.scrollerHeight = document.documentElement.clientHeight - 44;
+
+    this.scrollerHeight = document.documentElement.clientHeight - 44 - 46;
 
     this.keyword = '';
     this.listOfSearch = [
@@ -33,9 +40,21 @@ class NewsSearchController {
     ];
 
     this.pullupStatus = 'default';
+    
+    this.targetRouter = 'main.news_search.news_content'
+    
+  }
+
+  $onChange(changes) {
+
   }
 
   getResult({keyword}){
+    // this.news_service.getList().then((ret)=>{
+    //   console.log(ret);
+    // });
+
+
     this.timeout(()=>{
 
       if(keyword==='' || angular.isUndefined(keyword)){

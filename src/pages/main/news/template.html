@@ -1,4 +1,5 @@
 <action-bar title="小区新闻">
+    <left-btn></left-btn>
     <right-btn ng-click="news.goSearch()">
         <i class="fa fa-search" style="font-size:18px"></i>
     </right-btn>
@@ -9,7 +10,8 @@
         <list>
             <list-item ng-repeat="item in news.listOfNews"
                        item-data="item"
-                       tpl="{{item.showType}}"></list-item>
+                       tpl="{{item.showType}}"
+                       target="news.targetRouter"></list-item>
         </list>
     </scroller-body>
 

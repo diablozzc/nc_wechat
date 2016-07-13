@@ -5,6 +5,9 @@ import controller from './controller';
 
 
 const NewsSearchComponent = {
+  bindings: {
+    newsData: '<'
+  },
   controller,
   controllerAs:'newsSearch',
   template:require('./template.html')

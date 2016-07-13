@@ -1,10 +1,10 @@
-<!--<action-bar title="搜索">-->
-    <!--<right-btn></right-btn>-->
-<!--</action-bar>-->
+<action-bar title="新闻搜索">
+    <right-btn></right-btn>
+</action-bar>
 
 <search on-change="newsSearch.getResult($event)"
         value="newsSearch.keyword"
-        placeholder="搜索"
+        placeholder="关键词"
         cancel-text="取消"></search>
 
 <hot-keyword keywords="newsSearch.listOfKeyword" on-select="newsSearch.searchKeyword($event)" ng-show="!newsSearch.keyword"></hot-keyword>
@@ -15,7 +15,8 @@
         <list>
             <list-item ng-repeat="item in newsSearch.listOfSearch"
                        item-data="item"
-                       tpl="{{item.showType}}"></list-item>
+                       tpl="{{item.showType}}"
+                       target="newsSearch.targetRouter"></list-item>
         </list>
     </scroller-body>
 

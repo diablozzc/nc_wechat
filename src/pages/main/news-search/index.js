@@ -4,14 +4,24 @@
 
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import ngResource from 'angular-resource';
 import NewsSearchComponent from './component';
+import NewsSearchService from './service';
+import Config from '../../../services/config';
+import Models from '../../../services/models';
+
+
 import './style.less';
 
 const news_search = angular
   .module('newsSearch',[
-    uiRouter
+    uiRouter,
+    ngResource
   ])
   .component('newsSearch',NewsSearchComponent)
+  .service('NewsSearchService', NewsSearchService)
+  .service('Config',Config)
+  .service('Models',Models)
   .config(($stateProvider)=>{
     'ngInject';
     $stateProvider
@@ -22,6 +32,7 @@ const news_search = angular
           prev:'main.news'
         }
       });
+
   })
   .name;
 

@@ -7,6 +7,9 @@ import MainComponent from './main.component';
 import News from './news';
 import NewsContent from './news-content';
 import NewsSearch from './news-search';
+import CustomHttpHeader from '../../services/custom_header';
+import Auth from '../../services/auth';
+
 
 const main = angular
   .module('main',[
@@ -16,7 +19,9 @@ const main = angular
     ,NewsSearch
   ])
   .component('main',MainComponent)
-  .config(($stateProvider,$urlRouterProvider,$locationProvider)=>{
+  .service('Auth',Auth)
+  .factory('CustomHttpHeader',CustomHttpHeader)
+  .config(($stateProvider,$urlRouterProvider,$locationProvider,$httpProvider)=>{
     'ngInject';
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('!');
@@ -24,10 +29,16 @@ const main = angular
     $stateProvider
       .state('main',{
         abstract:true,
-        url:'/main',
-        component:'main'
+        url:'/wx',
+        component:'main',
+        resolve:{
+          auth: Auth => Auth.getSession()
+        },
+
       });
     $urlRouterProvider.otherwise('/');
+    $httpProvider.interceptors.push('CustomHttpHeader');
+    
   })
   .name;
 

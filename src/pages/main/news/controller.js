@@ -37,6 +37,8 @@ class NewsController {
     ];
 
     this.pullupStatus = 'default';
+    
+    this.targetRouter = 'main.news.news_content';
 
   }
 
