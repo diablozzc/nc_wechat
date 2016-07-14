@@ -6,6 +6,7 @@ import multiImage  from './tpl.multiImage.html';
 import imageText   from './tpl.imageText.html';
 import text        from './tpl.text.html';
 import video       from './tpl.video.html';
+import activity    from './tpl.activity.html';
 
 const ListItemTpl = ($state,$compile)=>({
   restrict:'A',
@@ -16,7 +17,8 @@ const ListItemTpl = ($state,$compile)=>({
       'multiImage':multiImage,
       'imageText':imageText,
       'text':text,
-      'video':video
+      'video':video,
+      'activity':activity
     };
 
     

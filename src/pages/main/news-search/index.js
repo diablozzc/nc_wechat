@@ -9,8 +9,6 @@ import NewsSearchComponent from './component';
 import NewsSearchService from './service';
 import Config from '../../../services/config';
 import Models from '../../../services/models';
-
-
 import './style.less';
 
 const news_search = angular

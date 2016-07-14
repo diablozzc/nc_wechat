@@ -7,6 +7,9 @@ const ArticleContentComponent = {
     theArticle:'<'
   },
   controller,
+  transclude:{
+    'extend':'?extend'
+  },
   template:require('./template.html')
 };
 

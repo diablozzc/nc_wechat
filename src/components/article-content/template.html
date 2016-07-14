@@ -17,6 +17,9 @@
             <em id="post-date" class="rich_media_meta rich_media_meta_text">{{$ctrl.theArticle.publishTime}}</em>
             <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">{{$ctrl.theArticle.source}}</span>
         </div>
+        <div ng-transclude="extend">
+
+        </div>
         <div class="article-content" style="" ng-bind-html="$ctrl.theArticle.content">
 
         </div>

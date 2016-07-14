@@ -4,10 +4,10 @@
 import controller from './controller';
 
 
-const NewsContentComponent = {
+const ActivityContentComponent = {
   controller,
-  controllerAs:'theNews',
+  controllerAs:'theActivity',
   template:require('./template.html')
 };
 
-export default NewsContentComponent;
+export default ActivityContentComponent;

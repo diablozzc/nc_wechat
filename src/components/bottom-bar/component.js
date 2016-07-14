@@ -9,6 +9,11 @@ const BottomBarComponent = {
     onClick:'&'
   },
   controller,
+  transclude:{
+    'leftBtn':'?leftBtn',
+    'middleBtn':'?middleBtn',
+    'rightBtn':'?rightBtn'
+  },
   template:require('./template.html')
 };
 

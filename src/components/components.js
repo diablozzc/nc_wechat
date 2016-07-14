@@ -13,6 +13,7 @@ import xTextarea from './x-textarea';
 import commentForm from './comment-form';
 import search from './search';
 import hotKeyword from './hot-keyword';
+import signupList from './signup-list';
 
 const components = angular
   .module('app.components',[
@@ -26,7 +27,8 @@ const components = angular
     xTextarea,
     commentForm,
     search,
-    hotKeyword
+    hotKeyword, 
+    signupList
   ])
   .name;
 

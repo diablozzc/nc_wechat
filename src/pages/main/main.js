@@ -7,9 +7,10 @@ import MainComponent from './main.component';
 import News from './news';
 import NewsContent from './news-content';
 import NewsSearch from './news-search';
+import Activities from './activities';
+import ActivityContent from './activity-content';
 import CustomHttpHeader from '../../services/custom_header';
 import Auth from '../../services/auth';
-
 
 const main = angular
   .module('main',[
@@ -17,6 +18,8 @@ const main = angular
     ,News
     ,NewsContent
     ,NewsSearch
+    ,Activities
+    ,ActivityContent
   ])
   .component('main',MainComponent)
   .service('Auth',Auth)
@@ -31,9 +34,9 @@ const main = angular
         abstract:true,
         url:'/wx',
         component:'main',
-        resolve:{
-          auth: Auth => Auth.getSession()
-        },
+        // resolve:{
+        //   auth: Auth => Auth.getSession()
+        // },
 
       });
     $urlRouterProvider.otherwise('/');

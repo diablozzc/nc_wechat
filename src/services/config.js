@@ -6,13 +6,13 @@ class Config {
   constructor() {
     this.config_data = {
       global:{
-        server:'/index.php/Home/'
+        server:'http://nc.mrshare.cn/api/'
       },
       data:{
         resources:{
-          'Api':{
-            name:'Api',uri:'Api/:action',actions:[
-              {action:'news',method:'GET',params:{action:'list_news'},isArray:false}
+          'Keywords':{
+            name:'Keywords',uri:'article/:columnKey/keywords',actions:[
+              {action:'get',method:'GET',isArray:false}
               // {action:'save_ad',method:'POST',params:{action:'save_ad'},isArray:false,requestType:'json'},
               // {action:'link',method:'POST',params:{action:'link'},isArray:false},
               // {action:'coupon',method:'JSONP',params:{action:'coupon',callback:'JSON_CALLBACK'},isArray:false},
@@ -22,7 +22,26 @@ class Config {
 
             ],serverKey:'server'
           },
-
+          'Article':{
+            name:'Article',uri:'article',actions:[
+              {action:'list',method:'GET',isArray:false}
+            ],serverKey:'server'
+            /*
+             map.put("num", "5");
+             map.put("upOrDown", "up");
+             map.put("time", String.valueOf(new Date("2017/01/01").getTime()));  //时间戳
+             map.put("columnKey", "column_news");
+             map.put("title", "");
+             map.put("keyword", "");
+             map.put("source", "");
+             map.put("status", "0");
+            */
+          },
+          'Article/id':{
+            name:'Article/id',uri:'article/:id',actions:[
+              {action:'get',method:'GET',isArray:false}
+            ],serverKey:'server'
+          },
         }
       }
     };

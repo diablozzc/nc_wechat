@@ -1,0 +1,30 @@
+<action-bar title="活动报名">
+    <left-btn></left-btn>
+    <right-btn ng-click="activity.goSearch()">
+        <i class="fa fa-search" style="font-size:18px"></i>
+    </right-btn>
+</action-bar>
+
+<scroller height="activity.scrollerHeight" class="bd" on-pull-up="activity.pullUp($event)" on-pull-up-loading="activity.loadMore()">
+    <scroller-body>
+        <list>
+            <list-item ng-repeat="item in activity.listOfActivities"
+                       item-data="item"
+                       tpl="activity"
+                       target="activity.targetRouter"></list-item>
+        </list>
+    </scroller-body>
+
+    <pull-up>
+        <span ng-show="activity.pullupStatus === 'default'"></span>
+        <span class="pullup-arrow"
+              ng-show="activity.pullupStatus === 'down' || activity.pullupStatus === 'up'"
+              ng-class="{'rotate': activity.pullupStatus === 'up'}">↑</span>
+        <span ng-show="activity.pullupStatus === 'loading'">加载中...</span>
+    </pull-up>
+
+</scroller>
+
+<div ui-view>
+
+</div>
