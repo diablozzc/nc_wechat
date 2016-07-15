@@ -9,6 +9,8 @@ import Pullup   from 'vux-xscroll/build/cmd/plugins/pullup';
 class ScrollerController {
 
   constructor($scope,$element,$timeout) {
+    this.scope = $scope;
+
     this.uuid = Math.random().toString(36).substring(3, 8);
 
     let p = $element[0].querySelector('.xs-container').parentNode;
@@ -25,8 +27,6 @@ class ScrollerController {
       clsPrefix: 'xs-plugin-pullup-'
     });
 
-
-
     this._xscroll = new XScroll({
       renderTo: `#scroller-${this.uuid}`,
       lockY: false,
@@ -34,7 +34,8 @@ class ScrollerController {
       scrollbarY:false
     });
 
-    let pull_container = $element[0].querySelector('section[ng-transclude="pullup"]');
+    // 上拉更新
+    let pull_container = $element[0].querySelector('section.pullup');
     let pull_up_config = pullupDefaultConfig();
 
     pull_up_config.container = pull_container;
@@ -43,47 +44,47 @@ class ScrollerController {
     this._xscroll.plug(this.pullup);
 
     this.pullup.on('statuschange',(val)=>{
-      this.onPullUp({
-        $event: {
-          status:val.newVal
-        }
-      });
-      $scope.$apply();
+      // 根据前一次的状态值判断使用不用的变量处理方式(事件来源不同:(Angular || 原生JS))
+      if(val.prevVal !== "loading"){
+        $scope.$apply(()=>{
+          this.pullupStatus = val.newVal;
+        });
+      }else{
+        this.pullupStatus = val.newVal;
+      }
+
     });
 
     this.pullup.on('loading', () => {
       this.onPullUpLoading();
-      $scope.$apply();
     });
     
     $timeout(()=>{
       this._xscroll.render();
     });
 
-    $scope.$on('pullup:reset',(e)=>{
-      this.pullup.complete();
-      this.reset();
-      this.onPullUp({
-        $event: {
-          status:'default'
-        }
-      });
-    });
 
     $scope.$on('scroller:reset',(e)=>{
       this.reset();
       this._xscroll.scrollTop(0,0);
     });
-
   }
 
   $onInit() {
+    this.pullupStatus = 'default';
   };
+
+  $onChanges(changes){
+    this.pullUpReset();
+  }
 
   reset(){
     this._xscroll && this._xscroll.render();
   }
-
+  pullUpReset(){
+    this.pullup.complete();
+    this.reset();
+  }
 
   computeStyle() {
     return {'height':`${this.height}px`};

@@ -3,7 +3,6 @@
  */
 const ListComponent = {
   bindings:{
-
   },
   transclude:{
     'item':'listItem'

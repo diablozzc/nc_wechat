@@ -11,11 +11,9 @@ class XTextareaController {
   }
 
   $onChanges(change) {
-    console.log(change)
   }
   
-
-
+  
 }
 
 // XTextareaController.$inject = ['$scope','$element'];

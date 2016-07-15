@@ -7,10 +7,15 @@
     </comment>
 
     <bottom-bar on-click="theNews.showCommentForm()">
+        <right-btn>
+            <i class="fa fa-comments-o fa-2x" style="color:#555;"></i>
+            <span class="vux-badge comment-badge">{{theNews.theArticle.commentNum}}</span>
+        </right-btn>
     </bottom-bar>
 
     <popup show="theNews.showPopup" height="140px" on-close-popup="theNews.onCloseComment()">
-        <comment-form on-cancel="theNews.onCloseComment()"></comment-form>
+        <comment-form on-cancel="theNews.onCloseComment()"
+                      on-submit="theNews.submitComment($event)"></comment-form>
     </popup>
 
 </div>

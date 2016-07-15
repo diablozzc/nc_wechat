@@ -1,9 +1,11 @@
 <div class="one-px-border"></div>
-<a href="" class="article_link clearfix">
-    <h3 class="dotdot line3 ">工地雇假警察上路执勤 称被警方默许</h3>
+<a href="javascript:;" class="article_link clearfix"
+   link-action="go"
+   link-action-param="{'uri':$ctrl.target,'param':{'itemId':$ctrl.itemData.autoId}}">
+    <h3 class="dotdot line3 ">{{$ctrl.itemData.title}}</h3>
 
     <div class="list_img_holder_large list_img_holder_large_fix" style="background: none;">
-        <img src="http://p3.pstatp.com/large/8db0008d794bbb0fb37" style="opacity: 1;">
+        <img ng-src="{{$ctrl.itemData.coverUrl[0].value}}" style="opacity: 1;">
 
         <div class="play-btn-wrap">
             <div class="play-btn">
@@ -14,8 +16,8 @@
 
     <div class="item_info">
 
-        <span class="src space">光明网</span>
-        <span class="time" title="2016-07-01 18:44">23分钟前</span>
+        <span class="src space">{{$ctrl.itemData.source}}</span>
+        <span class="time">{{$ctrl.itemData.publishTime}}</span>
 
     </div>
 

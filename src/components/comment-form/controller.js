@@ -16,7 +16,10 @@ class CommentFormController {
     this.onCancel();
   }
   sendComment(){
-    console.log(this.comment_content);
+    this.onSubmit({$event:{
+      comment_content:this.comment_content
+    }});
+    this.onCancel();
   }
 
 }

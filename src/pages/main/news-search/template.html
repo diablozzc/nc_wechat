@@ -1,4 +1,4 @@
-<action-bar title="新闻搜索">
+<action-bar title="搜索 - {{newsSearch.theColumnKey | kv:'columns'}}">
     <right-btn></right-btn>
 </action-bar>
 
@@ -7,10 +7,16 @@
         placeholder="关键词"
         cancel-text="取消"></search>
 
-<hot-keyword keywords="newsSearch.listOfKeyword" on-select="newsSearch.searchKeyword($event)" ng-show="!newsSearch.keyword"></hot-keyword>
+<hot-keyword keywords="newsSearch.listOfKeyword"
+             on-select="newsSearch.searchKeyword($event)"
+             ng-show="!newsSearch.keyword"></hot-keyword>
 
 
-<scroller class="bd" height="newsSearch.scrollerHeight" on-pull-up="newsSearch.pullUp($event)" on-pull-up-loading="newsSearch.loadMoreSearch()" ng-show="newsSearch.keyword">
+<scroller class="bd"
+          height="newsSearch.scrollerHeight"
+          on-pull-up-loading="newsSearch.loadMoreSearch()"
+          list-data="newsSearch.listOfSearch"
+          ng-show="newsSearch.keyword">
     <scroller-body>
         <list>
             <list-item ng-repeat="item in newsSearch.listOfSearch"
@@ -19,14 +25,6 @@
                        target="newsSearch.targetRouter"></list-item>
         </list>
     </scroller-body>
-
-    <pull-up>
-        <span ng-show="newsSearch.pullupStatus === 'default'"></span>
-        <span class="pullup-arrow"
-              ng-show="newsSearch.pullupStatus === 'down' || newsSearch.pullupStatus === 'up'"
-              ng-class="{'rotate': newsSearch.pullupStatus === 'up'}">↑</span>
-        <span ng-show="newsSearch.pullupStatus === 'loading'">加载中...</span>
-    </pull-up>
 
 </scroller>
 

@@ -11,8 +11,8 @@ class Config {
       data:{
         resources:{
           'Keywords':{
-            name:'Keywords',uri:'article/:columnKey/keywords',actions:[
-              {action:'get',method:'GET',isArray:false}
+            name:'Keywords',uri:'keywords/:columnKey',actions:[
+              {action:'get',method:'GET',isArray:true}
               // {action:'save_ad',method:'POST',params:{action:'save_ad'},isArray:false,requestType:'json'},
               // {action:'link',method:'POST',params:{action:'link'},isArray:false},
               // {action:'coupon',method:'JSONP',params:{action:'coupon',callback:'JSON_CALLBACK'},isArray:false},
@@ -23,26 +23,32 @@ class Config {
             ],serverKey:'server'
           },
           'Article':{
-            name:'Article',uri:'article',actions:[
-              {action:'list',method:'GET',isArray:false}
+            name:'Article',uri:'articles',actions:[
+              {action:'list',method:'GET',isArray:true}
             ],serverKey:'server'
-            /*
-             map.put("num", "5");
-             map.put("upOrDown", "up");
-             map.put("time", String.valueOf(new Date("2017/01/01").getTime()));  //时间戳
-             map.put("columnKey", "column_news");
-             map.put("title", "");
-             map.put("keyword", "");
-             map.put("source", "");
-             map.put("status", "0");
-            */
           },
           'Article/id':{
-            name:'Article/id',uri:'article/:id',actions:[
+            name:'Article/id',uri:'articles/:id',actions:[
               {action:'get',method:'GET',isArray:false}
             ],serverKey:'server'
           },
+          'Comments':{
+            name:'Comments',uri:'comments',actions:[
+              {action:'get',method:'GET',isArray:true},
+              {action:'submit',method:'POST',isArray:false,requestType:'json'}
+            ],serverKey:'server'
+          }
+        },
+        kv:{
+          columns:[
+            {val:'column_news',name:'小区新闻'},
+            {val:'column_notices',name:'各类通知'},
+            {val:'column_activities',name:'活动报名'},
+            {val:'column_service_guide',name:'办事指南'},
+            {val:'column_convenience',name:'便民服务'}
+          ]
         }
+
       }
     };
     return this.config_data;

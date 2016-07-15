@@ -1,7 +1,14 @@
 <div ng-style="scroller.computeStyle()">
     <div class="xs-container">
         <section ng-transclude="body" class="xs-content"></section>
-        <section ng-transclude="pulldown"></section>
-        <section ng-transclude="pullup" style="position: absolute; width: 100%; height: 40px; bottom: -40px; text-align: center;"></section>
+        <section></section>
+        <section class="pullup" style="position: absolute; width: 100%; height: 40px; bottom: -40px; text-align: center;">
+            <span ng-show="scroller.pullupStatus === 'default'"></span>
+            <span class="pullup-arrow"
+                  ng-show="scroller.pullupStatus === 'down' || scroller.pullupStatus === 'up'"
+                  ng-class="{'rotate': scroller.pullupStatus === 'up'}">↑</span>
+            <span ng-show="scroller.pullupStatus === 'loading'">加载中...</span>
+
+        </section>
     </div>
 </div>

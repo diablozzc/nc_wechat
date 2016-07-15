@@ -10,7 +10,8 @@ class SearchController {
       this.onChange(
         {$event:{
           keyword:new_keyword
-        }});
+        }}
+      );
       if(old_keyword === '' && new_keyword.length>0){
         this.touch()
       }

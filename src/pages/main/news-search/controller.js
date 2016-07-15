@@ -4,101 +4,60 @@
 
 class NewsSearchController {
   /*@ngInject*/
-  constructor($scope,$element,$timeout,$state,$resource,NewsSearchService,Models) {
+  constructor($scope,$element,$timeout,$state,$stateParams,NewsService,KeywordsService) {
     this.timeout = $timeout;
     this.scope = $scope;
-    this.news_service = NewsSearchService;
-    this.Models = Models;
+    this.state = $state;
+    this.stateParams = $stateParams;
+    this.NewsService = NewsService;
+    this.KeywordsService = KeywordsService;
   }
   $onInit() {
-    console.log('load api news');
-    this.Models.init('Api').actions('news').then((ret)=>{
-      console.log(ret);
-    });
 
+    this.theColumnKey = 'column_' + this.stateParams.column;
 
     this.scrollerHeight = document.documentElement.clientHeight - 44 - 46;
 
     this.keyword = '';
-    this.listOfSearch = [
-    ];
+    this.listOfSearch = [];
 
-    this.listOfKeyword = [
-      '热词1',
-      '热词2',
-      '热词3',
-      '热词4',
-      '热词5',
-      '热词6',
-      '热词7',
-      '热词833',
-      '热词9',
-      '热词10',
-      '热词11',
-      '热词12',
-      '热词13',
-    ];
+    this.listOfKeyword = [];
 
-    this.pullupStatus = 'default';
-    
     this.targetRouter = 'main.news_search.news_content'
-    
-  }
 
-  $onChange(changes) {
-
+    this.KeywordsService.getKeywords(this.theColumnKey).then((ret)=>{
+      this.listOfKeyword = Object.assign({},ret);
+    })
   }
+  
 
   getResult({keyword}){
-    // this.news_service.getList().then((ret)=>{
-    //   console.log(ret);
-    // });
 
-
-    this.timeout(()=>{
-
-      if(keyword==='' || angular.isUndefined(keyword)){
-        this.listOfSearch = [];
-      }else{
-        this.listOfSearch = [
-          {id:11,title:'测试新闻标题',showType:'singleImage'},
-          {id:12,title:'测试新闻标题2如果新闻的标题特别长那个特别的长长啊',showType:'multiImage'},
-          {id:13,title:'测试新闻标题3如果新闻的标题特别长那个特别的长长啊',showType:'imageText'},
-          {id:14,title:'测试新闻标题1',showType:'text'},
-          {id:15,title:'测试新闻标题2',showType:'text'},
-          {id:16,title:'测试新闻标题3',showType:'text'},
-          {id:17,title:'测试新闻标题4',showType:'text'},
-          {id:18,title:'测试新闻标题5',showType:'text'},
-          {id:19,title:'测试新闻标题6',showType:'text'},
-          {id:21,title:'测试新闻标题7',showType:'text'},
-          {id:31,title:'测试新闻标题8',showType:'text'},
-          {id:41,title:'测试新闻标题9',showType:'text'},
-          {id:51,title:'测试新闻标题10',showType:'text'},
-          {id:61,title:'测试新闻标题11',showType:'text'},
-          {id:71,title:'测试新闻标题12',showType:'text'},
-          {id:81,title:'测试新闻标题13',showType:'text'},
-          {id:91,title:'测试新闻标题5',showType:'video'}
-        ]
-      }
-      this.timeout(()=>{
-        this.scope.$broadcast('scroller:reset');
+    if(keyword==='' || angular.isUndefined(keyword)){
+      this.listOfSearch = [];
+    }else{
+      this.NewsService.getList({columnKey:this.theColumnKey,keyword:keyword}).then((ret)=>{
+        this.listOfSearch = Object.assign([],ret);
       });
 
-    },500);
-  }
+    }
 
-  pullUp({status}){
-    // console.log(status);
-    this.pullupStatus = status;
+    this.timeout(()=>{
+      this.scope.$broadcast('scroller:reset');
+    });
+
   }
+  
 
   loadMoreSearch(){
-    this.timeout(()=>{
-      if(this.keyword.length){
-        this.listOfSearch.push({id:100,title:'哇哈哈哇哈哈哇哈哈哇哈哈哇哈哈',showType:'text'});
-      }
-      this.scope.$broadcast('pullup:reset');
-    },500);
+
+    let oldest_time = this.listOfSearch[this.listOfSearch.length-1].time;
+    
+    this.NewsService.getList({columnKey:this.theColumnKey,keyword:this.keyword,upOrDown:'up',time:oldest_time}).then((ret)=>{
+
+      this.listOfSearch = this.listOfSearch.concat(ret);
+
+    });
 
   }
   
@@ -109,5 +68,4 @@ class NewsSearchController {
   
 }
 
-// NewsSearchController.$inject = ['$scope','$element','$timeout','$state'];
 export default NewsSearchController;

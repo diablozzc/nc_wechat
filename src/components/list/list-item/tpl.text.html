@@ -1,10 +1,11 @@
 <div class="one-px-border"></div>
 <a href="javascript:;" class="article_link clearfix "
-   link-action="go" link-action-param="{'uri':$ctrl.target,'param':{'itemId':$ctrl.itemData.id}}">
+   link-action="go"
+   link-action-param="{'uri':$ctrl.target,'param':{'itemId':$ctrl.itemData.autoId}}">
 
     <h3 class="dotdot line3 ">{{$ctrl.itemData.title}}</h3>
     <div class="item_info">
-        <span class="src space">新浪河南</span>
-        <span class="time" title="2016-07-01 18:13">52分钟前</span>
+        <span class="src space">{{$ctrl.itemData.source}}</span>
+        <span class="time">{{$ctrl.itemData.publishTime}}</span>
     </div>
 </a>

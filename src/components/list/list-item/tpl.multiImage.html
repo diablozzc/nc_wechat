@@ -1,28 +1,23 @@
 <div class="one-px-border"></div>
-<a href="#" class="article_link clearfix">
+<a href="javascript:;" class="article_link clearfix"
+   link-action="go"
+   link-action-param="{'uri':$ctrl.target,'param':{'itemId':$ctrl.itemData.autoId}}">
     <h3 class="dotdot line3 ">{{$ctrl.itemData.title}}</h3>
 
     <div class="list_image">
         <ul class="clearfix">
 
-            <li class="list_img_holder" style="background: none;">
-                <img src="http://p3.pstatp.com/list/96c000817b9bfdf0155" style="opacity: 1;">
+            <li class="list_img_holder" style="background: none;" ng-repeat="cover in $ctrl.itemData.coverUrl">
+                <img ng-src="{{cover.value}}" style="opacity: 1;">
             </li>
-            <li class="list_img_holder" style="background: none;">
-                <img src="http://p3.pstatp.com/list/96c000817b9bfdf0155" style="opacity: 1;">
-            </li>
-            <li class="list_img_holder" style="background: none;">
-                <img src="http://p3.pstatp.com/list/96c000817b9bfdf0155" style="opacity: 1;">
-            </li>
-
         </ul>
     </div>
 
 
     <div class="item_info">
 
-        <span class="src space">新京报政事儿</span>
-        <span class="time" title="2016-07-01 09:11">6小时前</span>
+        <span class="src space">{{$ctrl.itemData.source}}</span>
+        <span class="time">{{$ctrl.itemData.publishTime}}</span>
 
     </div>
 

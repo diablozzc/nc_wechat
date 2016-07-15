@@ -1,10 +1,10 @@
 <article id="pageletArticleContent" class="box">
 
-    <div class="video-wrapper" style="background-image: none;">
+    <div class="video-wrapper" style="background-image: none;" ng-if="$ctrl.theArticle.showType==='video'">
         <div class="tt-video-box" style="margin: 0px auto;">
             <video ng-src="{{$ctrl.theArticle.videoUrl}}"
                    type="video/mp4" controls
-                   poster="{{$ctrl.theArticle.coverUrl}}" preload="none" webkit-playsinline
+                   poster="{{$ctrl.theArticle.coverUrl[0].value}}" preload="none" webkit-playsinline
                    style="width:100%;"></video>
         </div>
     </div>

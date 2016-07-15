@@ -7,16 +7,14 @@ import controller from './controller';
 
 const ScrollerComponent = {
   bindings:{
+    listData:'<',
     height:'<',
-    onPullUp: '&',
     onPullUpLoading: '&'
   },
   controller,
   controllerAs:'scroller',
   transclude:{
-    'body':'scrollerBody',
-    'pulldown':'?pullDown',
-    'pullup':'?pullUp'
+    'body':'scrollerBody'
   },
   template:require('./template.html')
 };

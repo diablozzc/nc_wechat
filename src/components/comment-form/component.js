@@ -6,7 +6,8 @@ import controller from './controller'
 
 const CommentFormComponent = {
   bindings:{
-    onCancel:'&'
+    onCancel:'&',
+    onSubmit:'&'
   },
   controller,
   template:require('./template.html')

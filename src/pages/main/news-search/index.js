@@ -6,9 +6,12 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
 import NewsSearchComponent from './component';
-import NewsSearchService from './service';
 import Config from '../../../services/config';
 import Models from '../../../services/models';
+import KeyValue from '../../../filters/key_value';
+import NewsService from '../news/service';
+import KeywordsService from '../../../services/keywords'; 
+
 import './style.less';
 
 const news_search = angular
@@ -17,14 +20,16 @@ const news_search = angular
     ngResource
   ])
   .component('newsSearch',NewsSearchComponent)
-  .service('NewsSearchService', NewsSearchService)
   .service('Config',Config)
   .service('Models',Models)
+  .service('NewsService', NewsService)
+  .service('KeywordsService', KeywordsService)
+  .filter('kv',KeyValue)
   .config(($stateProvider)=>{
     'ngInject';
     $stateProvider
       .state('main.news_search',{
-        url:'/news_search?s',
+        url:'/{column:news|notices|service_guide|convenience}/search?s',
         component:'newsSearch',
         data:{
           prev:'main.news'

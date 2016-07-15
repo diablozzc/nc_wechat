@@ -1,11 +1,14 @@
-<action-bar title="小区新闻">
+<action-bar title="{{news.theColumnKey | kv:'columns'}}">
     <left-btn></left-btn>
     <right-btn ng-click="news.goSearch()">
         <i class="fa fa-search" style="font-size:18px"></i>
     </right-btn>
 </action-bar>
 
-<scroller height="news.scrollerHeight" class="bd" on-pull-up="news.pullUp($event)" on-pull-up-loading="news.loadMoreNews()">
+<scroller class="bd"
+          height="news.scrollerHeight"
+          on-pull-up-loading="news.loadMoreNews()"
+          list-data="news.listOfNews">
     <scroller-body>
         <list>
             <list-item ng-repeat="item in news.listOfNews"
@@ -14,13 +17,6 @@
                        target="news.targetRouter"></list-item>
         </list>
     </scroller-body>
-
-    <pull-up>
-        <span ng-show="news.pullupStatus === 'default'"></span>
-        <span class="pullup-arrow" ng-show="news.pullupStatus === 'down' || news.pullupStatus === 'up'" ng-class="{'rotate': news.pullupStatus === 'up'}">↑</span>
-        <span ng-show="news.pullupStatus === 'loading'">加载中...</span>
-    </pull-up>
-
 </scroller>
 
 <div ui-view>

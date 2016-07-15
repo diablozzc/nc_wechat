@@ -22,7 +22,8 @@ const CustomHttpHeader = ($q)=>({
 
     }
     config.headers.SessionId = window.sessionStorage.getItem('session_id');
-    
+    config.headers.UserSys = 'wx';
+
     return config;
   },
   'response': function (response) {
