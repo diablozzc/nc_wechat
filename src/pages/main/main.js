@@ -9,6 +9,8 @@ import NewsContent from './news-content';
 import NewsSearch from './news-search';
 import Activities from './activities';
 import ActivityContent from './activity-content';
+import ActivitySearch from './activity-search';
+import SignUp from './sign-up';
 import CustomHttpHeader from '../../services/custom_header';
 import Auth from '../../services/auth';
 
@@ -20,6 +22,8 @@ const main = angular
     ,NewsSearch
     ,Activities
     ,ActivityContent
+    ,ActivitySearch
+    ,SignUp
   ])
   .component('main',MainComponent)
   .service('Auth',Auth)

@@ -37,6 +37,22 @@ class Config {
               {action:'get',method:'GET',isArray:true},
               {action:'submit',method:'POST',isArray:false,requestType:'json'}
             ],serverKey:'server'
+          },
+          'Activities':{
+            name:'Activities',uri:'activities/wxlist',actions:[
+              {action:'wxlist',method:'GET',isArray:true}
+            ],serverKey:'server'
+          },
+          'Activities/id':{
+            name:'Activities/id',uri:'activities/:id',actions:[
+              {action:'get',method:'GET',isArray:false}
+            ],serverKey:'server'
+          },
+          'SignupList':{
+            name:'SignupList',uri:'activities/:id/wx/signupinfo',actions:[
+              {action:'list',method:'GET',isArray:true},
+              {action:'signup',method:'POST',isArray:false,requestType:'json'}
+            ],serverKey:'server'
           }
         },
         kv:{

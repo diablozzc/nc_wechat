@@ -1,0 +1,33 @@
+<action-bar title="搜索 - {{activitySearch.theColumnKey | kv:'columns'}}">
+    <right-btn></right-btn>
+</action-bar>
+
+<search on-change="activitySearch.getResult($event)"
+        value="activitySearch.keyword"
+        placeholder="关键词"
+        cancel-text="取消"></search>
+
+<hot-keyword keywords="activitySearch.listOfKeyword"
+             on-select="activitySearch.searchKeyword($event)"
+             ng-show="!activitySearch.keyword"></hot-keyword>
+
+
+<scroller class="bd"
+          height="activitySearch.scrollerHeight"
+          on-pull-up-loading="activitySearch.loadMoreSearch()"
+          list-data="activitySearch.listOfSearch"
+          ng-show="activitySearch.keyword">
+    <scroller-body>
+        <list>
+            <list-item ng-repeat="item in activitySearch.listOfSearch"
+                       item-data="item"
+                       tpl="activity"
+                       target="activitySearch.targetRouter"></list-item>
+        </list>
+    </scroller-body>
+
+</scroller>
+
+<div ui-view>
+
+</div>

@@ -10,8 +10,8 @@
                             <i class="fa fa-clock-o rich_media_meta_text"></i>
                         </div>
                         <div class="vux-flexbox-item" style="margin-left: 8px;">
-                            <span class="flex-demo">2016年7月7日开始</span><br>
-                            <span class="rich_media_meta_text">7月14号报名截止</span>
+                            <span class="flex-demo">{{theActivity.theActivity.startTimeText}} 至 {{theActivity.theActivity.endTimeText}}</span><br>
+                            <span class="rich_media_meta_text">{{theActivity.theActivity.signupEndTimeText}}报名截止</span>
                         </div>
                     </div>
 
@@ -23,7 +23,7 @@
                             <i class="fa fa-map-marker rich_media_meta_text"></i>
                         </div>
                         <div class="vux-flexbox-item" style="margin-left: 8px;">
-                            <span class="flex-demo">xxx路,xxx号</span>
+                            <span class="flex-demo">{{theActivity.theActivity.location}}</span>
                         </div>
                     </div>
 
@@ -36,7 +36,7 @@
                         </div>
                         <div class="vux-flexbox-item" style="margin-left: 8px;">
                             <span class="flex-demo">已有52人报名</span><br>
-                            <span class="rich_media_meta_text">限制报名人数为100人</span>
+                            <span class="rich_media_meta_text">限制报名人数为{{theActivity.theActivity.signupTop}}人</span>
                         </div>
                     </div>
 
@@ -50,18 +50,21 @@
     </signup-list>
 
     <comment list-data="theActivity.listOfComment" id="article_comment" on-load-more="theActivity.loadMoreComment()">
-
+        <buttons>
+            <button type="button" class="weui_btn weui_btn_mini weui_btn_default" ng-click="theActivity.showCommentForm()">写评论</button>
+        </buttons>
     </comment>
 
-    <bottom-bar on-click="theActivity.showCommentForm()">
+    <bottom-bar>
         <middle-btn>
-            <button class="weui_btn weui_btn_primary"> 我要报名 </button>
+            <button class="weui_btn weui_btn_primary" ng-click="theActivity.goSignupForm()"> 我要报名 </button>
         </middle-btn>
 
     </bottom-bar>
 
     <popup show="theActivity.showPopup" height="140px" on-close-popup="theActivity.onCloseComment()">
-        <comment-form on-cancel="theActivity.onCloseComment()"></comment-form>
+        <comment-form on-cancel="theActivity.onCloseComment()"
+                      on-submit="theActivity.submitComment($event)"></comment-form>
     </popup>
 
 </div>

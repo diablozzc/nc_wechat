@@ -9,6 +9,9 @@ const CommentComponent = {
     onLoadMore:'&'
   },
   controller,
+  transclude:{
+    'buttons':'buttons'
+  },
   template:require('./template.html')
 };
 

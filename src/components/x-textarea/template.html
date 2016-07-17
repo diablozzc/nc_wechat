@@ -8,7 +8,7 @@
                   ng-model="$ctrl.value"
                   ng-style="$ctrl.textareaStyle"
                   maxlength="{{$ctrl.max}}"
-                  required></textarea>
+                  ng-required="$ctrl.isRequired"></textarea>
         <div class="weui_textarea_counter" ng-show="$ctrl.showCounter && $ctrl.max">
             <span>{{$ctrl.count}}</span>/{{$ctrl.max}}
         </div>

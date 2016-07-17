@@ -5,7 +5,10 @@
     </right-btn>
 </action-bar>
 
-<scroller height="activity.scrollerHeight" class="bd" on-pull-up="activity.pullUp($event)" on-pull-up-loading="activity.loadMore()">
+<scroller class="bd"
+          height="activity.scrollerHeight"
+          on-pull-up-loading="activity.loadMore()"
+          list-data="activity.listOfActivities">
     <scroller-body>
         <list>
             <list-item ng-repeat="item in activity.listOfActivities"
@@ -14,15 +17,6 @@
                        target="activity.targetRouter"></list-item>
         </list>
     </scroller-body>
-
-    <pull-up>
-        <span ng-show="activity.pullupStatus === 'default'"></span>
-        <span class="pullup-arrow"
-              ng-show="activity.pullupStatus === 'down' || activity.pullupStatus === 'up'"
-              ng-class="{'rotate': activity.pullupStatus === 'up'}">↑</span>
-        <span ng-show="activity.pullupStatus === 'loading'">加载中...</span>
-    </pull-up>
-
 </scroller>
 
 <div ui-view>

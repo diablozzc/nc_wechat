@@ -64,16 +64,8 @@ class NewsContentController {
       console.log(ret);
       this.listOfComment = this.listOfComment.concat(ret);
 
-      // this.listOfComment = Object.assign({},ret);
     });
 
-    // this.listOfComment.push({
-    //   name: 'Secret',
-    //   avatar: 'http://linkms/dist/3.jpg',
-    //   time: '未来时间',
-    //   like_num: 99,
-    //   content: '居然没抢到沙发'
-    // })
   }
 }
 

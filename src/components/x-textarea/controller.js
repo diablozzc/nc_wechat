@@ -8,6 +8,9 @@ class XTextareaController {
 
   }
   $onInit() {
+
+    this.isRequired = this.required === 'true';
+    
   }
 
   $onChanges(change) {

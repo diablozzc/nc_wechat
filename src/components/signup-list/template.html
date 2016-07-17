@@ -1,21 +1,21 @@
 <h2>已有52人报名</h2>
 <hr>
 <ul class="discuss_list">
-    <li class="discuss_item" ng-repeat="comment in $ctrl.listData">
+    <li class="discuss_item" ng-repeat="item in $ctrl.listData">
 
         <div class="discuss_opr">
           <span class="media_tool_meta tips_global meta_praise">
-            <span class="praise_num">{{comment.time}}</span>
+            <span class="praise_num">{{item.signupTimeText}}</span>
           </span>
         </div>
 
         <div class="user_info">
-            <strong class="nickname">{{comment.name}}</strong>
-            <img class="avatar" ng-src="{{comment.avatar}}">
+            <strong class="nickname">{{item.nickName}}</strong>
+            <img class="avatar" ng-src="{{item.headImg}}">
         </div>
 
         <div class="discuss_message">
-            <span class="discuss_status">{{comment.status}}</span>
+            <!--<span class="discuss_status">{{comment.status}}</span>-->
             <!--<div class="discuss_message_content">{{comment.content}}</div>-->
         </div>
         <!--<p class="discuss_extra_info">{{comment.time}}-->

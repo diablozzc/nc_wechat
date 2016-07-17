@@ -3,30 +3,31 @@
  */
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import ActivitiesComponent from './component';
+import SignUpComponent from './component';
 import Config from '../../../services/config';
 import Models from '../../../services/models';
-import ActivityService from './service';
-
+import KeyValue from '../../../filters/key_value';
+import ActivityService from '../activities/service';
 import './style.less';
 
-const activities = angular
-  .module('activities',[
+const signUp = angular
+  .module('signUp',[
     uiRouter
   ])
-  .component('activities',ActivitiesComponent)
+  .component('signUp',SignUpComponent)
   .service('Config',Config)
   .service('Models',Models)
   .service('ActivityService',ActivityService)
+  .filter('kv',KeyValue)
   .config(($stateProvider)=>{
     'ngInject';
     $stateProvider
-      .state('main.activities',{
-        url:'/activities?s',
-        component:'activities'
+      .state('main.signup',{
+        url:'/signup/:activityId',
+        component:'signUp'
       });
   })
   .name;
 
 
-export default activities;
+export default signUp;

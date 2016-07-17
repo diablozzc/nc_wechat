@@ -1,0 +1,12 @@
+<div class="weui_cells_title">{{radio.title}}</div>
+<div class="weui_cells weui_cells_radio">
+    <label class="weui_cell weui_cell_radio weui_check_label" for="radio_{{radio.uuid}}_{{$index}}" ng-repeat="one in radio.options">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>{{one.key}}</p>
+        </div>
+        <div class="weui_cell_ft">
+            <input type="radio" class="weui_check" ng-model="radio.value" id="radio_{{radio.uuid}}_{{$index}}" name="radio_{{radio.uuid}}" ng-value="one.value">
+            <span class="weui_icon_checked"></span>
+        </div>
+    </label>
+</div>

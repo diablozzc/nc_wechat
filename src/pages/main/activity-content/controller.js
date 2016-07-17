@@ -4,72 +4,38 @@
 import Moment from 'moment';
 class ActivityContentController {
   /*@ngInject*/
-  constructor($scope,$element,$timeout,$state,$stateParams,$sce) {
+  constructor($scope,$element,$timeout,$state,$stateParams,$sce,ActivityService,CommentService) {
     this.prev = $state.current.data.prev;
     this.sce = $sce;
+    this.itemId = $stateParams.itemId;
+    this.state = $state;
+
+    this.theColumnKey = 'column_activities';
+    this.ActivityService = ActivityService;
+    this.CommentService = CommentService;
   }
   $onInit() {
-    this.theActivity = {
-      title:'为什么中国国产航母飞行甲板即将完工？但军事专家却高兴不起来',
-      coverUrl:'http://linkms/dist/video_cover.jpg',
-      videoUrl:this.sce.trustAsResourceUrl("http://linkms/dist/video_demo.mp4"),
-      content:require('./test_article_content.html'),
-      publishTime:'2016-06-22T00:20:00.000Z',
-      source:'居委会大妈'
-    };
+    this.theActivity = {};
 
-    this.theActivity.publishTime = Moment(this.theActivity.publishTime).format('YYYY-MM-DD');
 
-    this.listOfComment = [{
-      name: 'Airyland',
-      avatar: 'http://linkms/dist/1.png',
-      time: '昨天',
-      like_num: 99,
-      content: '沙发',
-      has_praised: true,
-      reply_list: [{
-        content: '恭喜~',
-        time: '今天早上'
-      }]
-    }, {
-      name: 'Vux',
-      avatar: 'http://linkms/dist/2.jpg',
-      time: '未来时间',
-      like_num: 0,
-      content: '板凳'
-    }, {
-      name: 'Secret',
-      avatar: 'http://linkms/dist/3.jpg',
-      time: '未来时间',
-      like_num: 99,
-      content: '居然没抢到沙发'
-    }];
+    this.ActivityService.getActivity(this.itemId).then((ret)=>{
+      this.theActivity = Object.assign({},ret);
+    });
 
-    this.listOfSignup = [{
-      name: 'Airyland',
-      avatar: 'http://linkms/dist/1.png',
-      time: '昨天',
-      like_num: 99,
-      content: '沙发',
-      has_praised: true,
-      reply_list: [{
-        content: '恭喜~',
-        time: '今天早上'
-      }]
-    }, {
-      name: 'Vux',
-      avatar: 'http://linkms/dist/2.jpg',
-      time: '未来时间',
-      like_num: 0,
-      content: '板凳'
-    }, {
-      name: 'Secret',
-      avatar: 'http://linkms/dist/3.jpg',
-      time: '未来时间',
-      like_num: 99,
-      content: '居然没抢到沙发'
-    }];
-    
+
+    this.listOfComment = [];
+    this.listOfSignup = [];
+
+    this.CommentService.getComments({columnKey:this.theColumnKey,itemId:this.itemId}).then((ret)=>{
+      this.listOfComment = Object.assign([],ret);
+    });
+
+    this.ActivityService.signupList({id:this.itemId}).then((ret)=>{
+      console.log(ret);
+      this.listOfSignup = ret;
+    });
+
+
     this.showPopup = false;
 
   }
@@ -82,27 +48,50 @@ class ActivityContentController {
     this.showPopup = false;
 
   }
+  submitComment({comment_content}){
+    this.CommentService.submit(this.theColumnKey,this.itemId,comment_content).then((ret)=>{
+      console.log(ret);
+    })
+  }
 
   loadMoreComment() {
     console.log('load more comments');
-    this.listOfComment.push({
-      name: 'Secret',
-      avatar: 'http://linkms/dist/3.jpg',
-      time: '未来时间',
-      like_num: 99,
-      content: '居然没抢到沙发'
-    })
+
+    let oldest_time = this.listOfComment[this.listOfComment.length-1].commentTimestamp;
+
+    this.CommentService.getComments({
+      columnKey:this.theColumnKey,
+      itemId:this.itemId,
+      upOrDown:'up',
+      time:oldest_time
+    }).then((ret)=>{
+      console.log(ret);
+      this.listOfComment = this.listOfComment.concat(ret);
+
+    });
+
   }
 
   loadMoreSignup() {
     console.log('load more signup');
-    this.listOfSignup.push({
-      name: 'Secret',
-      avatar: 'http://linkms/dist/3.jpg',
-      time: '未来时间',
-      like_num: 99,
-      content: '居然没抢到沙发'
-    })
+
+    let oldest_time = this.listOfSignup[this.listOfSignup.length-1].signupTimestamp;
+
+
+    this.ActivityService.signupList({
+      id:this.itemId,
+      upOrDown:'up',
+      time:oldest_time
+    }).then((ret)=>{
+      console.log(ret);
+      this.listOfSignup = this.listOfSignup.concat(ret);
+    });
+
+
+  }
+
+  goSignupForm() {
+    this.state.go('main.signup',{activityId:this.itemId});
   }
 }
 

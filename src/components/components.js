@@ -14,6 +14,7 @@ import commentForm from './comment-form';
 import search from './search';
 import hotKeyword from './hot-keyword';
 import signupList from './signup-list';
+import radio from './radio';
 
 const components = angular
   .module('app.components',[
@@ -28,7 +29,8 @@ const components = angular
     commentForm,
     search,
     hotKeyword, 
-    signupList
+    signupList,
+    radio
   ])
   .name;
 
