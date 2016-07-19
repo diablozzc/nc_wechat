@@ -9,6 +9,7 @@ import ActivityService from './activity_service';
 import NewsService from './news_service';
 import CommentService from './comments';
 import KeywordsService from './keywords';
+import FeedbackService from './feedback_service';
 
 const services = angular
   .module('Services',[
@@ -20,6 +21,7 @@ const services = angular
   .service('NewsService',NewsService)
   .service('CommentService',CommentService)
   .service('KeywordsService',KeywordsService)
+  .service('FeedbackService',FeedbackService)
   .name;
 
 

@@ -4,21 +4,35 @@
 
 class FeedbackController {
   /*@ngInject*/
-  constructor($scope,$element,$timeout,$state,$stateParams) {
+  constructor($scope,$state,$stateParams,FeedbackService) {
     this.scope = $scope;
     this.state = $state;
     this.stateParams = $stateParams;
-    // this.itemId = $stateParams.activityId;
-    // this.ActivityService = ActivityService;
+    this.feedbackService = FeedbackService;
 
 
   }
   $onInit() {
-    // this.theSignUp = {
-    //   gender:true,
-    //   activity:this.itemId
-    // };
-    // this.gender = [{key: '男', value: true}, {key: '女', value: false}];
+    this.theFeedback = {};
+    this.showHits = false;
+  }
+
+  feedback(){
+
+    const data = Object.assign({},this.theFeedback);
+    this.reset();
+
+    this.feedbackService.feedback(data).then((ret)=>{
+      this.showHits = true;
+    });
+  }
+
+  reset() {
+    this.theFeedback = {};
+  }
+
+  test(){
+    this.showHits = true;
   }
 
   

@@ -14,15 +14,23 @@ class MainController {
   $onInit() {
 
     window.ref = encodeURIComponent(location.href.split('#')[0]);
+
     let data = {url:window.ref};
     this.models.init('Oauth2').actions('getConfig',data).then((ret)=>{
-      wx.config(ret);
+      let wxConf = {};
+
+      wxConf.appId = ret.appId;
+      wxConf.debug = false;
+      wxConf.jsApiList = ret.jsApiList;
+      wxConf.nonceStr = ret.noncestr;
+      wxConf.signature = ret.signature;
+      wxConf.timestamp = ret.timestamp;
+
+      wx.config(wxConf);
     })
   }
 
 }
-
-// MainController.$inject = ['$scope','$state','$stateParams'];
 
 
 export default MainController;

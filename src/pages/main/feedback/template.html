@@ -1,4 +1,6 @@
-<action-bar title="我有话说">
+<action-bar title="我有话说" fixed="true">
+    <left-btn>
+    </left-btn>
     <right-btn>
     </right-btn>
 </action-bar>
@@ -6,25 +8,30 @@
     <div class="weui_cells_title">我要说:</div>
     <div class="weui_cells">
         <xtextarea max="20"
-                   value="$ctrl.theFeedback.remark"
-                   name="remark_content"
+                   value="$ctrl.theFeedback.content"
+                   name="feedback_content"
                    placeholder="您的留言只有居委干部可以看到,您可以放心畅所欲言"
                    rows="3"
-                   height="50px" required="true"></xtextarea>
+                   height="50px"
+                   required="true"></xtextarea>
     </div>
 
-
+    <div class="weui_cells_title">手机号:</div>
     <div class="weui_cells weui_cells_form">
-
         <div class="weui_cell">
-            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+            <!--<div class="weui_cell_hd"><label class="weui_label">手机号</label></div>-->
             <div class="weui_cell_bd weui_cell_primary">
                 <input class="weui_input" type="number" placeholder="请输入手机号码" ng-model="$ctrl.theFeedback.mobile" required>
             </div>
         </div>
     </div>
-    <div class="weui_btn_area">
-        <button class="weui_btn weui_btn_default weui_btn_plain_default" type="button"> 上传图片 </button>
+
+    <uploader-wechat result="$ctrl.theFeedback.image"></uploader-wechat>
+
+    <div class="weui_cells" ng-if="$ctrl.theFeedback.image">
+        <div class="weui_cell">
+            <img class="upload_image" ng-src="{{$ctrl.theFeedback.image}}">
+        </div>
     </div>
 
     <div class="weui_btn_area">
@@ -34,3 +41,5 @@
                 ng-class="{'weui_btn_disabled':feedbackForm.$invalid}">提交</button>
     </div>
 </form>
+
+<toast show="$ctrl.showHits">提交成功</toast>

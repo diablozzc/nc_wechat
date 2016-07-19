@@ -48,9 +48,14 @@ class Config {
             ],serverKey:'server'
           },
           'Oauth2':{
-            name:'Oauth2',uri:'oauth2/:action',actions:[
+            name:'Oauth2',uri:'oauth2/:action/:mediaId',actions:[
               {action:'getConfig',method:'GET', params:{action:'wxconfig'},isArray:false},
-              {action:'downloadMedia',method:'POST',params:{action:'wxmedia'},isArray:false,requestType:'json'}
+              {action:'downloadMedia',method:'GET',params:{action:'wxmedia'},isArray:false}
+            ],serverKey:'server'
+          },
+          'Feedbacks':{
+            name:'Feedbacks',uri:'feedbacks',actions:[
+              {action:'submit',method:'POST',isArray:false,requestType:'json'}
             ],serverKey:'server'
           }
         },

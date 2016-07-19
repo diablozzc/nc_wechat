@@ -15,22 +15,27 @@ import search from './search';
 import hotKeyword from './hot-keyword';
 import signupList from './signup-list';
 import radio from './radio';
+import uploaderWechat from './uploader-wechat';
+import toast from './toast';
 
 const components = angular
-  .module('app.components',[
+  .module('app.components', [
     actionBar,
     scroller,
     list,
     articleContent,
-    comment, 
+    comment,
     bottomBar,
     Popup,
     xTextarea,
     commentForm,
     search,
-    hotKeyword, 
+    hotKeyword,
     signupList,
-    radio
+    radio,
+    uploaderWechat,
+    toast
+    
   ])
   .name;
 

@@ -6,8 +6,6 @@ import uiRouter from 'angular-ui-router';
 import FeedbackComponent from './component';
 import Services from '../../../services';
 
-// import Config from '../../../services/config';
-// import Models from '../../../services/models';
 import './style.less';
 
 const feedback = angular
@@ -16,8 +14,6 @@ const feedback = angular
     Services
   ])
   .component('feedback',FeedbackComponent)
-  // .service('Config',Config)
-  // .service('Models',Models)
   .config(($stateProvider)=>{
     'ngInject';
     $stateProvider

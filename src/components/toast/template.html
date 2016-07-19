@@ -1,0 +1,7 @@
+<div ng-show="toast.show" class="vux-toast vux-fade-transition">
+    <div class="weui_mask_transparent"></div>
+    <div class="weui_toast" ng-style="{width: toast.width}" ng-class="toast.toastClass()">
+        <i class="weui_icon_toast" ng-show="toast.type !== 'text'"></i>
+        <p class="weui_toast_content" ng-transclude></p>
+    </div>
+</div>

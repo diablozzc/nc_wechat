@@ -6,6 +6,7 @@ import controller from './controller';
 const ActionBarComponent = {
   bindings:{
     title:'@',
+    fixed:'@'
   },
   transclude:{
     'leftBtn':'?leftBtn',
