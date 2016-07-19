@@ -9,23 +9,20 @@ class NewsSearchController {
     this.scope = $scope;
     this.state = $state;
     this.stateParams = $stateParams;
-    this.NewsService = NewsService;
-    this.KeywordsService = KeywordsService;
+    this.newsService = NewsService;
+    this.keywordsService = KeywordsService;
   }
+  
   $onInit() {
 
     this.theColumnKey = 'column_' + this.stateParams.column;
-
     this.scrollerHeight = document.documentElement.clientHeight - 44 - 46;
-
     this.keyword = '';
     this.listOfSearch = [];
-
     this.listOfKeyword = [];
-
     this.targetRouter = 'main.news_search.news_content'
 
-    this.KeywordsService.getKeywords(this.theColumnKey).then((ret)=>{
+    this.keywordsService.getKeywords(this.theColumnKey).then((ret)=>{
       this.listOfKeyword = Object.assign({},ret);
     })
   }
@@ -36,7 +33,7 @@ class NewsSearchController {
     if(keyword==='' || angular.isUndefined(keyword)){
       this.listOfSearch = [];
     }else{
-      this.NewsService.getList({columnKey:this.theColumnKey,keyword:keyword}).then((ret)=>{
+      this.newsService.getList({columnKey:this.theColumnKey,keyword:keyword}).then((ret)=>{
         this.listOfSearch = Object.assign([],ret);
       });
 
@@ -53,7 +50,7 @@ class NewsSearchController {
 
     let oldest_time = this.listOfSearch[this.listOfSearch.length-1].time;
     
-    this.NewsService.getList({columnKey:this.theColumnKey,keyword:this.keyword,upOrDown:'up',time:oldest_time}).then((ret)=>{
+    this.newsService.getList({columnKey:this.theColumnKey,keyword:this.keyword,upOrDown:'up',time:oldest_time}).then((ret)=>{
 
       this.listOfSearch = this.listOfSearch.concat(ret);
 

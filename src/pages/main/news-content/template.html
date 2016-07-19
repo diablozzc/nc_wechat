@@ -15,7 +15,8 @@
 
     <popup show="theNews.showPopup" height="140px" on-close-popup="theNews.onCloseComment()">
         <comment-form on-cancel="theNews.onCloseComment()"
-                      on-submit="theNews.submitComment($event)"></comment-form>
+                      on-submit="theNews.submitComment($event)"
+                      show="theNews.showPopup"></comment-form>
     </popup>
 
 </div>

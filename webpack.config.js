@@ -8,8 +8,6 @@ var autoprefixer      = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var NpmInstallPlugin  = require('npm-install-webpack-plugin');
-var ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
 
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
@@ -25,17 +23,15 @@ module.exports = function makeWebpackConfig(){
 
   config.output = {
     path: __dirname + '/dist',
-    // publicPath: 'http://localhost:8080/',
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
-    // filename: '[name].bundle.js',
+    publicPath: isProd ? '/public/' : 'http://localhost:8080/',
     filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
-    // chunkFilename: '[name].bundle.js'
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
   };
 
   if (isProd) {
     config.devtool = 'source-map';
   } else {
+    // config.devtool = 'source-map';
     config.devtool = 'eval-source-map';
   }
 
@@ -43,7 +39,7 @@ module.exports = function makeWebpackConfig(){
   config.module = {
     loaders:[{
         test: /\.js$/,
-        loader: 'babel',
+        loaders: ['ng-annotate','babel'],
         exclude: /node_modules/
       },{
         test: /\.css$/,
@@ -80,11 +76,7 @@ module.exports = function makeWebpackConfig(){
       template: './src/index.html',
       inject: 'body'
     }),
-    new ExtractTextPlugin('[name].[hash].css'),
-    new NpmInstallPlugin(),
-    new ngAnnotatePlugin({
-      add: true
-    })
+    new ExtractTextPlugin('[name].[hash].css')
 
   );
 
@@ -101,7 +93,12 @@ module.exports = function makeWebpackConfig(){
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        },
+        mangle: true
+      }),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin

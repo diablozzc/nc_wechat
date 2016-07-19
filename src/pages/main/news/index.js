@@ -4,29 +4,25 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import NewsComponent from './component';
-import Config from '../../../services/config';
-import Models from '../../../services/models';
+import Services from '../../../services';
 import KeyValue from '../../../filters/key_value';
-import NewsService from './service';
 import './style.less';
 
 const news = angular
   .module('news',[
-    uiRouter
+    uiRouter,
+    Services
   ])
   .component('news',NewsComponent)
-  .service('Config',Config)
-  .service('Models',Models)
-  .service('NewsService',NewsService)
   .filter('kv',KeyValue)
-  .config(($stateProvider)=>{
+  .config(['$stateProvider',($stateProvider)=>{
     'ngInject';
     $stateProvider
       .state('main.news',{
         url:'/{column:news|notices|service_guide|convenience}?s',
         component:'news'
       });
-  })
+  }])
   .name;
 
 

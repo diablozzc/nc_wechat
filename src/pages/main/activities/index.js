@@ -3,21 +3,16 @@
  */
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import Services from '../../../services';
 import ActivitiesComponent from './component';
-import Config from '../../../services/config';
-import Models from '../../../services/models';
-import ActivityService from './service';
-
 import './style.less';
 
 const activities = angular
   .module('activities',[
-    uiRouter
+    uiRouter,
+    Services
   ])
   .component('activities',ActivitiesComponent)
-  .service('Config',Config)
-  .service('Models',Models)
-  .service('ActivityService',ActivityService)
   .config(($stateProvider)=>{
     'ngInject';
     $stateProvider

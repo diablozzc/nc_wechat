@@ -6,7 +6,7 @@ import Moment from 'moment';
 import 'moment/locale/zh-cn';
 
 class CommentsService {
-  /*ngInject*/
+  /*@ngInject*/
   constructor(Models) {
     this.Models = Models;
   }

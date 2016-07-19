@@ -10,6 +10,9 @@ class CommentFormController {
   $onInit() {
     this.comment_content = '';
   }
+  $onChanges(changes) {
+    console.log(changes);
+  }
 
 
   cancelComment(){

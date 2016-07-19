@@ -13,7 +13,8 @@ const XTextareaComponent = {
     rows:'@',
     cols:'@',
     height:'@',
-    required:'@'
+    required:'@',
+    show:'<'
   },
   controller,
   template:require('./template.html')

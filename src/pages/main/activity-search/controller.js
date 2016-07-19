@@ -9,8 +9,8 @@ class ActivitySearchController {
     this.scope = $scope;
     this.state = $state;
     this.stateParams = $stateParams;
-    this.ActivityService = ActivityService;
-    this.KeywordsService = KeywordsService;
+    this.activityService = ActivityService;
+    this.keywordsService = KeywordsService;
   }
   $onInit() {
 
@@ -20,12 +20,11 @@ class ActivitySearchController {
 
     this.keyword = '';
     this.listOfSearch = [];
-
     this.listOfKeyword = [];
 
     this.targetRouter = 'main.activities.activity_content';
 
-    this.KeywordsService.getKeywords(this.theColumnKey).then((ret)=>{
+    this.keywordsService.getKeywords(this.theColumnKey).then((ret)=>{
       this.listOfKeyword = Object.assign({},ret);
     })
   }
@@ -36,7 +35,7 @@ class ActivitySearchController {
     if(keyword==='' || angular.isUndefined(keyword)){
       this.listOfSearch = [];
     }else{
-      this.ActivityService.getList({keyword:keyword}).then((ret)=>{
+      this.activityService.getList({keyword:keyword}).then((ret)=>{
         this.listOfSearch = Object.assign([],ret);
       });
 
@@ -53,7 +52,7 @@ class ActivitySearchController {
 
     let oldest_time = this.listOfSearch[this.listOfSearch.length-1].publishTimestamp;
     
-    this.ActivityService.getList({keyword:this.keyword,upOrDown:'up',time:oldest_time}).then((ret)=>{
+    this.activityService.getList({keyword:this.keyword,upOrDown:'up',time:oldest_time}).then((ret)=>{
 
       this.listOfSearch = this.listOfSearch.concat(ret);
 

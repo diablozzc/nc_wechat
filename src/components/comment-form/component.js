@@ -6,6 +6,7 @@ import controller from './controller'
 
 const CommentFormComponent = {
   bindings:{
+    show:'<',
     onCancel:'&',
     onSubmit:'&'
   },

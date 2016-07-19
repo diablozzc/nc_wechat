@@ -3,7 +3,7 @@
  */
 
 class KeywordsService {
-  /*ngInject*/
+  /*@ngInject*/
   constructor(Models) {
     this.Models = Models;
   }

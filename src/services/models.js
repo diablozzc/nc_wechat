@@ -4,7 +4,7 @@
 import angular from 'angular';
 
 class Models {
-  /*ngInject*/
+  /*@ngInject*/
   constructor($q,$resource,Config) {
     this.conf = {};
     this.res = {};
@@ -147,5 +147,5 @@ class Models {
   }
 }
 
-
+// Models.$inject = ['$q','$resource','Config'];
 export default Models;

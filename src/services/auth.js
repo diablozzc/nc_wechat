@@ -5,14 +5,14 @@ import angular from 'angular';
 import queryString from 'query-string';
 
 class AuthService {
-  /*ngInject*/
+  /*@ngInject*/
   constructor($state,$stateParams,$q) {
     this.$q = $q;
     this.$state = $state;
     this.$stateParams = $stateParams;
   }
   goOauth(uri){
-    this.oauth_link = `http://nc.mrshare.cn/api/oauth2?uri=${uri}&type=router`;
+    this.oauth_link = `http://nc.mrshare.cn/api/oauth2?uri=/${uri}&type=router`;
     window.location.href = this.oauth_link;
 
   }

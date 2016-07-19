@@ -1,7 +1,6 @@
 /**
  * Created by zhangzhichao on 16/7/5.
  */
-import Moment from 'moment';
 class ActivityContentController {
   /*@ngInject*/
   constructor($scope,$element,$timeout,$state,$stateParams,$sce,ActivityService,CommentService) {
@@ -11,14 +10,14 @@ class ActivityContentController {
     this.state = $state;
 
     this.theColumnKey = 'column_activities';
-    this.ActivityService = ActivityService;
-    this.CommentService = CommentService;
+    this.activityService = ActivityService;
+    this.commentService = CommentService;
   }
   $onInit() {
     this.theActivity = {};
 
 
-    this.ActivityService.getActivity(this.itemId).then((ret)=>{
+    this.activityService.getActivity(this.itemId).then((ret)=>{
       this.theActivity = Object.assign({},ret);
     });
 
@@ -26,12 +25,11 @@ class ActivityContentController {
     this.listOfComment = [];
     this.listOfSignup = [];
 
-    this.CommentService.getComments({columnKey:this.theColumnKey,itemId:this.itemId}).then((ret)=>{
+    this.commentService.getComments({columnKey:this.theColumnKey,itemId:this.itemId}).then((ret)=>{
       this.listOfComment = Object.assign([],ret);
     });
 
-    this.ActivityService.signupList({id:this.itemId}).then((ret)=>{
-      console.log(ret);
+    this.activityService.signupList({id:this.itemId}).then((ret)=>{
       this.listOfSignup = ret;
     });
 
@@ -49,7 +47,7 @@ class ActivityContentController {
 
   }
   submitComment({comment_content}){
-    this.CommentService.submit(this.theColumnKey,this.itemId,comment_content).then((ret)=>{
+    this.commentService.submit(this.theColumnKey,this.itemId,comment_content).then((ret)=>{
       console.log(ret);
     })
   }
@@ -59,7 +57,7 @@ class ActivityContentController {
 
     let oldest_time = this.listOfComment[this.listOfComment.length-1].commentTimestamp;
 
-    this.CommentService.getComments({
+    this.commentService.getComments({
       columnKey:this.theColumnKey,
       itemId:this.itemId,
       upOrDown:'up',
@@ -78,7 +76,7 @@ class ActivityContentController {
     let oldest_time = this.listOfSignup[this.listOfSignup.length-1].signupTimestamp;
 
 
-    this.ActivityService.signupList({
+    this.activityService.signupList({
       id:this.itemId,
       upOrDown:'up',
       time:oldest_time

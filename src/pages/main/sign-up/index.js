@@ -4,20 +4,16 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import SignUpComponent from './component';
-import Config from '../../../services/config';
-import Models from '../../../services/models';
+import Services from '../../../services';
 import KeyValue from '../../../filters/key_value';
-import ActivityService from '../activities/service';
 import './style.less';
 
 const signUp = angular
   .module('signUp',[
-    uiRouter
+    uiRouter,
+    Services
   ])
   .component('signUp',SignUpComponent)
-  .service('Config',Config)
-  .service('Models',Models)
-  .service('ActivityService',ActivityService)
   .filter('kv',KeyValue)
   .config(($stateProvider)=>{
     'ngInject';
@@ -28,6 +24,5 @@ const signUp = angular
       });
   })
   .name;
-
 
 export default signUp;

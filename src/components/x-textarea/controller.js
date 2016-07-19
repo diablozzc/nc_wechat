@@ -4,7 +4,10 @@
 
 class XTextareaController {
   /*@ngInject*/
-  constructor($scope,$element) {
+  constructor($scope,$element,$timeout) {
+    this.timeout = $timeout;
+    this.input = $element[0].querySelector('textarea');
+
 
   }
   $onInit() {
@@ -13,12 +16,17 @@ class XTextareaController {
     
   }
 
-  $onChanges(change) {
+  $onChanges(changes) {
+    if(changes.show.currentValue){
+
+      this.timeout(()=>{
+        this.input.focus();
+      });
+      
+    }
   }
   
   
 }
-
-// XTextareaController.$inject = ['$scope','$element'];
 
 export default XTextareaController;

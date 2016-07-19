@@ -11,6 +11,9 @@ import Activities from './activities';
 import ActivityContent from './activity-content';
 import ActivitySearch from './activity-search';
 import SignUp from './sign-up';
+import Feedback from './feedback';
+
+import Services from '../../services';
 import CustomHttpHeader from '../../services/custom_header';
 import Auth from '../../services/auth';
 
@@ -24,12 +27,14 @@ const main = angular
     ,ActivityContent
     ,ActivitySearch
     ,SignUp
+    ,Feedback
+    ,Services
   ])
   .component('main',MainComponent)
   .service('Auth',Auth)
   .factory('CustomHttpHeader',CustomHttpHeader)
   .config(($stateProvider,$urlRouterProvider,$locationProvider,$httpProvider)=>{
-    'ngInject';
+    "ngInject";
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('!');
 
@@ -38,9 +43,9 @@ const main = angular
         abstract:true,
         url:'/wx',
         component:'main',
-        // resolve:{
-        //   auth: Auth => Auth.getSession()
-        // },
+        resolve:{
+          auth: Auth => Auth.getSession()
+        },
 
       });
     $urlRouterProvider.otherwise('/');
@@ -48,6 +53,10 @@ const main = angular
     
   })
   .name;
+
+wx.ready(()=>{
+  window.weixin_ready = true;
+});
 
 
 export default main;

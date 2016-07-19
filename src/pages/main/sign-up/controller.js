@@ -9,7 +9,7 @@ class SignUpController {
     this.state = $state;
     this.stateParams = $stateParams;
     this.itemId = $stateParams.activityId;
-    this.ActivityService = ActivityService;
+    this.activityService = ActivityService;
 
 
   }
@@ -25,7 +25,7 @@ class SignUpController {
   signUp(){
     // console.log(this.theSignUp);
 
-    this.ActivityService.signUp(this.itemId,this.theSignUp).then((ret)=>{
+    this.activityService.signUp(this.itemId,this.theSignUp).then((ret)=>{
       // 提示成功
       history.back();
     });

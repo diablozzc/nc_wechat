@@ -1,0 +1,36 @@
+<action-bar title="我有话说">
+    <right-btn>
+    </right-btn>
+</action-bar>
+<form name="feedbackForm" ng-submit="$ctrl.feedback()">
+    <div class="weui_cells_title">我要说:</div>
+    <div class="weui_cells">
+        <xtextarea max="20"
+                   value="$ctrl.theFeedback.remark"
+                   name="remark_content"
+                   placeholder="您的留言只有居委干部可以看到,您可以放心畅所欲言"
+                   rows="3"
+                   height="50px" required="true"></xtextarea>
+    </div>
+
+
+    <div class="weui_cells weui_cells_form">
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="请输入手机号码" ng-model="$ctrl.theFeedback.mobile" required>
+            </div>
+        </div>
+    </div>
+    <div class="weui_btn_area">
+        <button class="weui_btn weui_btn_default weui_btn_plain_default" type="button"> 上传图片 </button>
+    </div>
+
+    <div class="weui_btn_area">
+        <button class="weui_btn weui_btn_primary"
+                type="submit"
+                ng-disabled="feedbackForm.$invalid"
+                ng-class="{'weui_btn_disabled':feedbackForm.$invalid}">提交</button>
+    </div>
+</form>

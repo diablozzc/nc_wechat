@@ -5,21 +5,17 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ActivityContentComponent from './component';
-import Config from '../../../services/config';
-import Models from '../../../services/models';
-import ActivityService from '../activities/service';
-import CommentService from '../../../services/comments';
+import Services from '../../../services';
+// import CommentService from '../../../services/comments';
 import './style.less';
 
 const activity_content = angular
   .module('activityContent', [
-    uiRouter
+    uiRouter,
+    Services
   ])
   .component('activityContent', ActivityContentComponent)
-  .service('Config',Config)
-  .service('Models',Models)
-  .service('ActivityService',ActivityService)
-  .service('CommentService',CommentService)
+  // .service('CommentService',CommentService)
   .config(($stateProvider)=> {
     'ngInject';
     $stateProvider

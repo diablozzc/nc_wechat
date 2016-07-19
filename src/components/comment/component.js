@@ -10,7 +10,7 @@ const CommentComponent = {
   },
   controller,
   transclude:{
-    'buttons':'buttons'
+    'buttons':'?buttons'
   },
   template:require('./template.html')
 };

@@ -8,8 +8,8 @@ class NewsContentController {
     this.sce = $sce;
     this.articleId = $stateParams.itemId;
     this.theColumnKey = 'column_' + $stateParams.column;
-    this.NewsService = NewsService;
-    this.CommentService = CommentService;
+    this.newsService = NewsService;
+    this.commentService = CommentService;
   }
   $onInit() {
 
@@ -18,7 +18,7 @@ class NewsContentController {
     };
 
     // this.theArticle.publishTime = Moment(this.theArticle.publishTime).format('YYYY-MM-DD');
-    this.NewsService.getArticle(this.articleId).then((ret)=>{
+    this.newsService.getArticle(this.articleId).then((ret)=>{
       this.theArticle = Object.assign({},ret);
     });
 
@@ -26,7 +26,7 @@ class NewsContentController {
 
     this.listOfComment = [];
 
-    this.CommentService.getComments({columnKey:this.theColumnKey,itemId:this.articleId}).then((ret)=>{
+    this.commentService.getComments({columnKey:this.theColumnKey,itemId:this.articleId}).then((ret)=>{
       this.listOfComment = Object.assign([],ret);
     });
     
@@ -44,7 +44,7 @@ class NewsContentController {
   }
   
   submitComment({comment_content}){
-    this.CommentService.submit(this.theColumnKey,this.articleId,comment_content).then((ret)=>{
+    this.commentService.submit(this.theColumnKey,this.articleId,comment_content).then((ret)=>{
       console.log(ret);
     })
   }
@@ -55,21 +55,18 @@ class NewsContentController {
     let oldest_time = this.listOfComment[this.listOfComment.length-1].commentTimestamp;
 
 
-    this.CommentService.getComments({
+    this.commentService.getComments({
         columnKey:this.theColumnKey,
         itemId:this.articleId,
         upOrDown:'up',
         time:oldest_time
       }).then((ret)=>{
-      console.log(ret);
       this.listOfComment = this.listOfComment.concat(ret);
 
     });
 
   }
 }
-
-
 
 // NewsContentController.$inject = ['$scope','$element','$timeout','$state','$stateParams','$sce'];
 export default NewsContentController;

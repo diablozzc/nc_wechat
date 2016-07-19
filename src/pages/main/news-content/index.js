@@ -5,22 +5,18 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import NewsContentComponent from './component';
-import Config from '../../../services/config';
-import Models from '../../../services/models';
-import NewsService from '../news/service';
-import CommentService from '../../../services/comments';
+import Services from '../../../services';
+// import CommentService from '../../../services/comments';
 
 import './style.less';
 
 const news_content = angular
   .module('newsContent',[
-    uiRouter
+    uiRouter,
+    Services
   ])
   .component('newsContent',NewsContentComponent)
-  .service('Config',Config)
-  .service('Models',Models)
-  .service('NewsService',NewsService)
-  .service('CommentService',CommentService)
+  // .service('CommentService',CommentService)
   .config(($stateProvider)=>{
     'ngInject';
     $stateProvider
