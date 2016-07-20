@@ -15,6 +15,7 @@ class ActivityContentController {
   }
   $onInit() {
     this.theActivity = {};
+    this.signUpNum = 0;
 
 
     this.activityService.getActivity(this.itemId).then((ret)=>{
@@ -31,6 +32,10 @@ class ActivityContentController {
 
     this.activityService.signupList({id:this.itemId}).then((ret)=>{
       this.listOfSignup = ret;
+    });
+
+    this.activityService.signupNum(this.itemId).then((ret)=>{
+      this.signUpNum = ret;
     });
 
 

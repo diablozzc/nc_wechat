@@ -27,7 +27,7 @@ class PosterService {
       if(ret.isShowPoster && !isShown){
         window.sessionStorage.setItem(`${columnKey}.poster.shown`,true);
         //Go to poster state with column key
-        this.$state.go('main.poster',{key:columnKey});
+        this.$state.go('main.poster',{key:columnKey},{location:false});
         
         deferred.reject({poster:false});
       }else{

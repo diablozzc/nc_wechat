@@ -20,7 +20,7 @@ class PosterPageController {
   goBack(key){
     let index = _.findIndex(this.config.data.kv['columns'],['val',key]);
     let value = this.config.data.kv['columns'][index];
-    this.state.go(value.state,value.param);
+    this.state.go(value.state,value.param,{location:false});
   }
   
 

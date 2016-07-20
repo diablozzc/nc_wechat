@@ -35,7 +35,7 @@
                             <i class="fa fa-users rich_media_meta_text"></i>
                         </div>
                         <div class="vux-flexbox-item" style="margin-left: 8px;">
-                            <span class="flex-demo">已有52人报名</span><br>
+                            <span class="flex-demo">已有{{theActivity.signUpNum}}人报名</span><br>
                             <span class="rich_media_meta_text">限制报名人数为{{theActivity.theActivity.signupTop}}人</span>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
         </extend>
     </article-content>
 
-    <signup-list list-data="theActivity.listOfSignup" on-load-more="theActivity.loadMoreSignup()">
+    <signup-list list-data="theActivity.listOfSignup" on-load-more="theActivity.loadMoreSignup()" sign-up-number="theActivity.signUpNum">
 
     </signup-list>
 

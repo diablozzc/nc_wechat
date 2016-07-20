@@ -7,9 +7,11 @@ import 'moment/locale/zh-cn';
 
 class ActivityService {
   /*@ngInject*/
-  constructor(Models,$sce) {
+  constructor(Models,Config,$sce,$http) {
     this.Models = Models;
+    this.config = Config;
     this.sce = $sce;
+    this.http = $http;
     Moment.locale('zh_cn');
   }
   getList(param={}) {
@@ -59,12 +61,14 @@ class ActivityService {
       return response;
     });
   }
+  signupNum(id){
+    return this.http.get(this.config.global.server+'activities/wx/'+id).then(response => response.data);
+  }
   
   signUp(id,param={}){
     let p = Object.assign({},param);
 
     return this.Models.init('SignupList').actions('signup',p,{id:id}).then((response)=>{
-
       return response;
     });
   }

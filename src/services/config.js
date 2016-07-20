@@ -47,6 +47,11 @@ class Config {
               {action:'signup',method:'POST',isArray:false,requestType:'json'}
             ],serverKey:'server'
           },
+          'SignupNum':{
+            name:'SignupNum',uri:'activities/wx/:id',actions:[
+              {action:'get',method:'GET',isArray:false,responseType:'text'}
+            ],serverKey:'server'
+          },
           'MyActivities':{
             name:'MyActivities',uri:'activities/wx/signupinfo',actions:[
               {action:'list',method:'GET',isArray:true}
