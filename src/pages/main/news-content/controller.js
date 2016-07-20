@@ -13,6 +13,8 @@ class NewsContentController {
   }
   $onInit() {
 
+    this.showHits = false;
+
     this.theArticle = {
       commentNum:0
     };
@@ -44,13 +46,15 @@ class NewsContentController {
   }
   
   submitComment({comment_content}){
+
     this.commentService.submit(this.theColumnKey,this.articleId,comment_content).then((ret)=>{
-      console.log(ret);
+      // console.log(ret);
+      this.showHits = true;
     })
   }
 
   loadMoreComment() {
-    console.log('load more comments');
+    // console.log('load more comments');
 
     let oldest_time = this.listOfComment[this.listOfComment.length-1].commentTimestamp;
 
@@ -68,5 +72,4 @@ class NewsContentController {
   }
 }
 
-// NewsContentController.$inject = ['$scope','$element','$timeout','$state','$stateParams','$sce'];
 export default NewsContentController;

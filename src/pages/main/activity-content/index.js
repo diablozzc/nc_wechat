@@ -26,11 +26,18 @@ const activity_content = angular
           prev: 'main.activities'
         }
       })
-      .state('main.activity_search.news_content', {
+      .state('main.activity_search.activity_content', {
         url: '/:itemId?s',
         component: 'activityContent',
         data: {
-          prev: 'main.activities'
+          prev: 'main.activity_search'
+        }
+      })
+      .state('main.mysignup.activity_content', {
+        url: '/:itemId?s',
+        component: 'activityContent',
+        data: {
+          prev: 'main.mysignup'
         }
       })
   })

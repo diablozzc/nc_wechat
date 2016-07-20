@@ -17,6 +17,7 @@ import signupList from './signup-list';
 import radio from './radio';
 import uploaderWechat from './uploader-wechat';
 import toast from './toast';
+import poster from './poster';
 
 const components = angular
   .module('app.components', [
@@ -34,7 +35,8 @@ const components = angular
     signupList,
     radio,
     uploaderWechat,
-    toast
+    toast,
+    poster
     
   ])
   .name;

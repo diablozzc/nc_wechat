@@ -20,7 +20,12 @@ const news = angular
     $stateProvider
       .state('main.news',{
         url:'/{column:news|notices|service_guide|convenience}?s',
-        component:'news'
+        component:'news',
+        resolve:{
+          poster: (PosterService,$stateParams) => {
+            return PosterService.goPoster('column_'+$stateParams.column);
+          }
+        }
       });
   }])
   .name;

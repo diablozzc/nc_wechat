@@ -10,10 +10,12 @@ class SignUpController {
     this.stateParams = $stateParams;
     this.itemId = $stateParams.activityId;
     this.activityService = ActivityService;
+    this.timeout = $timeout;
 
 
   }
   $onInit() {
+    this.showHits = false;
     this.theSignUp = {
       gender:true,
       activity:this.itemId
@@ -23,11 +25,13 @@ class SignUpController {
 
   
   signUp(){
-    // console.log(this.theSignUp);
 
     this.activityService.signUp(this.itemId,this.theSignUp).then((ret)=>{
       // 提示成功
-      history.back();
+      this.showHits = true;
+      this.timeout(()=>{
+        history.back();
+      },2000)
     });
   }
 

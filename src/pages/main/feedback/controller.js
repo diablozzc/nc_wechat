@@ -30,10 +30,7 @@ class FeedbackController {
   reset() {
     this.theFeedback = {};
   }
-
-  test(){
-    this.showHits = true;
-  }
+  
 
   
 

@@ -20,10 +20,21 @@ class ActivityService {
         item.publishTimestamp = Moment(item.publishTime).valueOf();
         item.startTimeText = Moment(item.startTime).format('YYYY年MM月DD日');
       });
-      // console.log(response);
 
       return response;
     });
+  }
+  myActivity(param={}){
+    let p = Object.assign({},param);
+    
+    return this.Models.init('MyActivities').actions('list',p).then((response)=>{
+      _.forEach(response,(item)=>{
+        item.publishTimestamp = Moment(item.publishTime).valueOf();
+        item.startTimeText = Moment(item.startTime).format('YYYY年MM月DD日');
+      });
+      return response;
+    });
+
   }
   getActivity(id){
     return this.Models.init('Activities/id').actions('get',{},{id:id}).then((response)=>{

@@ -2,7 +2,7 @@
  * Created by zhangzhichao on 16/6/30.
  */
   
-class ActivitiesController {
+class MySignupController {
   /*@ngInject*/
   constructor($scope,$element,$timeout,$state,ActivityService) {
     this.scope = $scope;
@@ -12,11 +12,11 @@ class ActivitiesController {
   }
   $onInit() {
     this.scrollerHeight = document.documentElement.clientHeight - 46;
-    this.title = '活动报名';
+    this.title = '我的活动';
     this.listOfActivities = [];
     this.pullupStatus = 'default';
-    this.targetRouter = 'main.activities.activity_content';
-    this.activityService.getList().then((ret)=>{
+    this.targetRouter = 'main.mysignup.activity_content';
+    this.activityService.myActivity().then((ret)=>{
       this.listOfActivities = Object.assign([],ret);
     });
     
@@ -25,17 +25,19 @@ class ActivitiesController {
   loadMore(){
 
     let oldest_time = this.listOfActivities[this.listOfActivities.length-1].publishTimestamp;
-    this.activityService.getList({upOrDown:'up',time:oldest_time}).then((ret)=>{
+    this.activityService.myActivity({upOrDown:'up',time:oldest_time}).then((ret)=>{
       this.listOfActivities = this.listOfActivities.concat(ret);
     });
     
     
   }
   
-  goSearch() {
-    this.state.go('main.activity_search');
-  }
+  // goSearch() {
+  //   this.state.go('main.activity_search');
+  // }
 
 }
 
-export default ActivitiesController;
+// MySignupController.$inject = ['$scope','$element','$timeout','$state','ActivityService'];
+
+export default MySignupController;

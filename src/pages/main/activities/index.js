@@ -18,7 +18,10 @@ const activities = angular
     $stateProvider
       .state('main.activities',{
         url:'/activities?s',
-        component:'activities'
+        component:'activities',
+        resolve:{
+          poster: PosterService => PosterService.goPoster('column_activities')
+        }
       });
   })
   .name;

@@ -1,6 +1,7 @@
 /**
  * Created by zhangzhichao on 16/6/28.
  */
+import _ from 'lodash';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';

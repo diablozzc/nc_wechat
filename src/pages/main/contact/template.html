@@ -1,0 +1,19 @@
+<div class="weui_panel weui_panel_access">
+    <div class="weui_panel_hd">联系居委</div>
+    <div class="weui_panel_bd">
+        <a class="weui_media_box weui_media_appmsg" href="javascript:;" ng-repeat="item in $ctrl.member_list">
+            <div class="weui_media_hd">
+                <img class="weui_media_appmsg_thumb" alt=""
+                     ng-src="{{item.headImg}}">
+            </div>
+            <div class="weui_media_bd">
+                <h4 class="weui_media_title">{{item.title}}</h4>
+                <p class="weui_media_desc">{{item.desc}}</p>
+            </div>
+        </a>
+
+        <div class="weui_media_box weui_media_small_appmsg">
+            <div class="weui_cells weui_cells_access"></div>
+        </div>
+    </div>
+</div>

@@ -3,29 +3,29 @@
  */
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import FeedbackComponent from './component';
+import CommunityComponent from './component';
 import Services from '../../../services';
 
 import './style.less';
 
-const feedback = angular
-  .module('feedback',[
+const community = angular
+  .module('community',[
     uiRouter,
     Services
   ])
-  .component('feedback',FeedbackComponent)
+  .component('community',CommunityComponent)
   .config(($stateProvider)=>{
     'ngInject';
     $stateProvider
-      .state('main.feedback',{
-        url:'/feedback',
-        component:'feedback',
+      .state('main.community',{
+        url:'/community?s',
+        component:'community',
         resolve:{
-          poster: PosterService => PosterService.goPoster('column_feedback')
+          poster: PosterService => PosterService.goPoster('column_community')
         }
       });
   })
   .name;
 
 
-export default feedback;
+export default community;

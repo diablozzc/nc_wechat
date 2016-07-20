@@ -1,0 +1,22 @@
+<action-bar title="{{mysignup.title}}">
+    <left-btn></left-btn>
+    <right-btn></right-btn>
+</action-bar>
+
+<scroller class="bd"
+          height="mysignup.scrollerHeight"
+          on-pull-up-loading="mysignup.loadMore()"
+          list-data="mysignup.listOfActivities">
+    <scroller-body>
+        <list>
+            <list-item ng-repeat="item in mysignup.listOfActivities"
+                       item-data="item"
+                       tpl="activity"
+                       target="mysignup.targetRouter"></list-item>
+        </list>
+    </scroller-body>
+</scroller>
+
+<div ui-view>
+
+</div>

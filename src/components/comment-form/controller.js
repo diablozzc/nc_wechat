@@ -22,7 +22,12 @@ class CommentFormController {
     this.onSubmit({$event:{
       comment_content:this.comment_content
     }});
+    this.reset();
     this.onCancel();
+  }
+
+  reset(){
+    this.comment_content = '';
   }
 
 }

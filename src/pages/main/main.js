@@ -12,6 +12,11 @@ import ActivityContent from './activity-content';
 import ActivitySearch from './activity-search';
 import SignUp from './sign-up';
 import Feedback from './feedback';
+import MySignUp from './my-sign-up';
+import MyReply from './my-reply';
+import Community from './community';
+import Contact from './contact';
+import PosterPage from './poster';
 
 import Services from '../../services';
 import CustomHttpHeader from '../../services/custom_header';
@@ -28,6 +33,11 @@ const main = angular
     ,ActivitySearch
     ,SignUp
     ,Feedback
+    ,MySignUp
+    ,MyReply
+    ,Community
+    ,Contact
+    ,PosterPage
     ,Services
   ])
   .component('main',MainComponent)

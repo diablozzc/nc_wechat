@@ -32,6 +32,8 @@
         <button class="weui_btn weui_btn_primary"
                 type="submit"
                 ng-disabled="signUpForm.$invalid"
-                ng-class="{'weui_btn_disabled':signUpForm.$invalid}">确定</button>
+                ng-class="{'weui_btn_disabled':signUpForm.$invalid}">提交</button>
     </div>
 </form>
+
+<toast show="$ctrl.showHits">报名成功</toast>

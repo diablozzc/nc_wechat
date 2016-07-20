@@ -45,12 +45,13 @@ class ScrollerController {
 
     this.pullup.on('statuschange',(val)=>{
       // 根据前一次的状态值判断使用不用的变量处理方式(事件来源不同:(Angular || 原生JS))
+      // console.log(val);
       if(val.prevVal !== "loading"){
         $scope.$apply(()=>{
           this.pullupStatus = val.newVal;
         });
       }else{
-        this.pullupStatus = val.newVal;
+        this.pullupStatus = val.newVal === 'up' ? 'default' : val.newVal;
       }
 
     });
@@ -75,10 +76,12 @@ class ScrollerController {
   };
 
   $onChanges(changes){
+
     this.pullUpReset();
   }
 
   reset(){
+
     this._xscroll && this._xscroll.render();
   }
   pullUpReset(){

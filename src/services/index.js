@@ -10,6 +10,7 @@ import NewsService from './news_service';
 import CommentService from './comments';
 import KeywordsService from './keywords';
 import FeedbackService from './feedback_service';
+import PosterService from './poster_service';
 
 const services = angular
   .module('Services',[
@@ -22,6 +23,7 @@ const services = angular
   .service('CommentService',CommentService)
   .service('KeywordsService',KeywordsService)
   .service('FeedbackService',FeedbackService)
+  .service('PosterService',PosterService)
   .name;
 
 

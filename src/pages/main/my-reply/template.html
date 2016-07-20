@@ -1,0 +1,50 @@
+<action-bar title="{{reply.title}}" fixed="true">
+    <left-btn></left-btn>
+    <right-btn></right-btn>
+</action-bar>
+
+<div class="">
+    <div class="weui_cell">
+        <ul class="discuss_list">
+            <li class="discuss_item" ng-repeat="comment in reply.listOfReply">
+                <div class="discuss_opr">
+                    <span class="media_tool_meta tips_global meta_praise praised">
+                        <span class="praise_num">{{comment.sayTimeText}}</span>
+                    </span>
+                </div>
+
+                <div class="user_info">
+                    <strong class="nickname">{{comment.nickName}}</strong>
+                    <img class="avatar" ng-src="{{comment.headImg}}">
+                </div>
+
+                <div class="discuss_message">
+                    <span class="discuss_status"></span>
+                    <div class="discuss_message_content">{{comment.content}}</div>
+                </div>
+                <p class="discuss_extra_info">{{comment.commentTimeText}}
+
+                    <!--<a v-if="comment.is_from_me" class="discuss_del js_del" href="javascript:;" data-my-id="<#=my_id#>" data-content-id="<#=content_id#>">删除</a>-->
+                </p>
+
+                <div class="reply_result" ng-if="comment.replies && comment.replies.length"
+                     ng-repeat="reply in comment.replies">
+                    <div class="nickname">{{reply.name}}</div>
+                    <div class="discuss_message">
+                        <div class="discuss_message_content">{{reply.content}}</div>
+                    </div>
+                    <p class="discuss_extra_info">{{reply.replyTimeText}}</p>
+                </div>
+
+            </li>
+        </ul>
+
+    </div>
+    <div style="padding:0 17px 17px 17px">
+        <button class="weui_btn weui_btn_default"
+                style="color:#666;font-size:14px"
+                ng-click="reply.loadMore()"> 加载更多
+        </button>
+    </div>
+</div>
+
