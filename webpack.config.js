@@ -29,10 +29,10 @@ module.exports = function makeWebpackConfig(){
   };
 
   if (isProd) {
-    config.devtool = 'source-map';
+    config.devtool = 'cheap-source-map';
   } else {
-    // config.devtool = 'source-map';
-    config.devtool = 'eval-source-map';
+    config.devtool = 'cheap-source-map';
+    // config.devtool = 'eval-source-map';
   }
 
 

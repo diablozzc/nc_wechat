@@ -1,5 +1,25 @@
-<div class="weui_btn_area">
-    <button class="weui_btn weui_btn_default weui_btn_plain_default"
-            type="button"
-            ng-click="uploader.wechatChoose()"> 上传图片 </button>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            <div class="weui_uploader">
+                <div class="weui_uploader_hd weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">图片上传</div>
+                    <div class="weui_cell_ft">{{uploader.images.url.length}}/{{uploader.images.total}}</div>
+                </div>
+                <div class="weui_uploader_bd">
+                    <ul class="weui_uploader_files">
+                        <li class="weui_uploader_file" style="background-image:url({{item}})" ng-repeat="item in uploader.images.url track by $index">
+                            <span class="vux-badge" style="position:absolute;top:0;right:0" ng-click="uploader.delImg($index)">X</span>
+                        </li>
+
+                    </ul>
+                    <div class="weui_uploader_input_wrp" ng-click="uploader.wechatChoose()" ng-if="uploader.images.url.length < uploader.images.total">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<loading show="uploader.showLoading" text="上传中..."></loading>

@@ -1,6 +1,10 @@
 <div class="article-content-page">
 
     <article-content the-article="theActivity.theActivity">
+        <meta-info>
+            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">{{theActivity.theActivity.hoster}}</span>
+            <em id="post-date" class="rich_media_meta rich_media_meta_text">{{theActivity.theActivity.publishTimeText}}</em>
+        </meta-info>
         <extend>
             <div class="vux-flexbox vux-flex-col" style="background: #f3f3f3;font-size: 12px;">
                 <div class="vux-flexbox-item pt10" style="margin-top: 8px;">
@@ -42,6 +46,8 @@
 
                 </div>
             </div>
+            <div style="margin-top: 15px;"><img ng-src="{{theActivity.theActivity.overUrl}}" style="max-width: 100%"></div>
+
         </extend>
     </article-content>
 
@@ -57,7 +63,8 @@
 
     <bottom-bar>
         <middle-btn>
-            <button class="weui_btn weui_btn_primary" ng-click="theActivity.goSignupForm()"> 我要报名 </button>
+            <button class="weui_btn" ng-class="{'weui_btn_primary':!theActivity.isSigned,'weui_btn_default weui_btn_disabled':theActivity.isSigned}"
+                    ng-click="theActivity.goSignupForm()" ng-disabled="theActivity.isSigned"> {{theActivity.signText()}} </button>
         </middle-btn>
 
     </bottom-bar>

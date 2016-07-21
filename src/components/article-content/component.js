@@ -8,6 +8,7 @@ const ArticleContentComponent = {
   },
   controller,
   transclude:{
+    'metaInfo':'?metaInfo',
     'extend':'?extend'
   },
   template:require('./template.html')

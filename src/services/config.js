@@ -52,6 +52,11 @@ class Config {
               {action:'get',method:'GET',isArray:false,responseType:'text'}
             ],serverKey:'server'
           },
+          'IsSigned':{
+            name:'IsSigned',uri:'activities/:id/issignup',actions:[
+              {action:'get',method:'GET',isArray:false}
+            ],serverKey:'server'
+          },
           'MyActivities':{
             name:'MyActivities',uri:'activities/wx/signupinfo',actions:[
               {action:'list',method:'GET',isArray:true}
@@ -60,7 +65,7 @@ class Config {
           'Oauth2':{
             name:'Oauth2',uri:'oauth2/:action/:mediaId',actions:[
               {action:'getConfig',method:'GET', params:{action:'wxconfig'},isArray:false},
-              {action:'downloadMedia',method:'GET',params:{action:'wxmedia'},isArray:false}
+              {action:'downloadMedia',method:'POST',params:{action:'wxmedia'},isArray:true}
             ],serverKey:'server'
           },
           'Feedbacks':{

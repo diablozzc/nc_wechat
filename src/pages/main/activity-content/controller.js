@@ -16,9 +16,11 @@ class ActivityContentController {
   $onInit() {
     this.theActivity = {};
     this.signUpNum = 0;
+    this.isSigned = false;
 
 
     this.activityService.getActivity(this.itemId).then((ret)=>{
+      console.log(ret);
       this.theActivity = Object.assign({},ret);
     });
 
@@ -36,6 +38,10 @@ class ActivityContentController {
 
     this.activityService.signupNum(this.itemId).then((ret)=>{
       this.signUpNum = ret;
+    });
+
+    this.activityService.isSigned(this.itemId).then((ret)=>{
+      this.isSigned = ret.data;
     });
 
 
@@ -68,7 +74,6 @@ class ActivityContentController {
       upOrDown:'up',
       time:oldest_time
     }).then((ret)=>{
-      console.log(ret);
       this.listOfComment = this.listOfComment.concat(ret);
 
     });
@@ -95,6 +100,10 @@ class ActivityContentController {
 
   goSignupForm() {
     this.state.go('main.signup',{activityId:this.itemId});
+  }
+  
+  signText() {
+    return this.isSigned ? '已报名' : '我要报名';
   }
 }
 

@@ -40,7 +40,7 @@ class ActivityService {
   }
   getActivity(id){
     return this.Models.init('Activities/id').actions('get',{},{id:id}).then((response)=>{
-      response.publishTime = Moment(response.publishTime).format('YYYY-MM-DD');
+      response.publishTimeText = Moment(response.publishTime).format('M月D日');
       response.startTimeText = `${Moment(response.startTime).format('M月D日')}（${Moment.weekdaysShort(Moment(response.startTime).day())}）${Moment(response.startTime).format('HH:mm')}`;
       response.endTimeText = `${Moment(response.endTime).format('M月D日')}（${Moment.weekdaysShort(Moment(response.endTime).day())}）${Moment(response.endTime).format('HH:mm')}`;
       response.signupEndTimeText = Moment(response.signupEndTime).format('M月D号');
@@ -63,6 +63,11 @@ class ActivityService {
   }
   signupNum(id){
     return this.http.get(this.config.global.server+'activities/wx/'+id).then(response => response.data);
+  }
+  isSigned(id){
+    return this.Models.init('IsSigned').actions('get',{id:id}).then((response)=>{
+      return response;
+    });
   }
   
   signUp(id,param={}){
