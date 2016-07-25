@@ -20,7 +20,7 @@ class NewsService {
       _.forEach(response,(item)=>{
         item.publishTime = Moment(item.publishTime).fromNow();
         if(item.showType==='multiImage' && item.coverUrl.length<3){
-          for(let i=0;i<3-item.coverUrl.length;i++){
+          for(let i=0;i<=3-item.coverUrl.length;i++){
             item.coverUrl.push({value:''});
           }
         }

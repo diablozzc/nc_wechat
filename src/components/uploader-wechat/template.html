@@ -8,7 +8,9 @@
                 </div>
                 <div class="weui_uploader_bd">
                     <ul class="weui_uploader_files">
-                        <li class="weui_uploader_file" style="background-image:url({{item}})" ng-repeat="item in uploader.images.url track by $index">
+                        <li class="weui_uploader_file"
+                            style="background-image:url({{item}})"
+                            ng-repeat="item in uploader.images.url track by $index">
                             <span class="vux-badge" style="position:absolute;top:0;right:0" ng-click="uploader.delImg($index)">X</span>
                         </li>
 

@@ -4,8 +4,9 @@
    link-action-param="{'uri':$ctrl.target,'param':{'itemId':$ctrl.itemData.autoId}}">
     <h3 class="dotdot line3 ">{{$ctrl.itemData.title}}</h3>
 
-    <div class="list_img_holder_large list_img_holder_large_fix" style="background: none;">
-        <img ng-src="{{$ctrl.itemData.coverUrl[0].value}}" style="opacity: 1;">
+    <div class="list_img_holder_large list_img_holder_large_fix img-cover"
+         style="background-image:url({{$ctrl.itemData.coverUrl[0].value}});"
+         ng-style="$ctrl.theHeight">
 
         <div class="play-btn-wrap">
             <div class="play-btn">

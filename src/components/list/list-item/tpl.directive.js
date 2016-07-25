@@ -21,6 +21,24 @@ const ListItemTpl = ($state,$compile)=>({
       'activity':activity
     };
 
+    let singleWidth = $attrs.winWidth - 30;
+    let singleHeight = singleWidth / 1.8;
+
+    let multiWidth = ($attrs.winWidth - 30) * 0.33;
+    let multiHeight = multiWidth / 1.8;
+
+    switch ($attrs.listItemTpl){
+      case 'singleImage':
+      case 'video':
+      case 'activity':
+        $scope.$ctrl.theHeight = {'height':singleHeight+'px'};
+        break;
+      case 'multiImage':
+      case 'imageText':
+        $scope.$ctrl.theHeight = {'height':multiHeight+'px'};
+        break;
+    }
+    
     
     $element.html(tpl[$attrs.listItemTpl]);
     $compile($element.contents())($scope);

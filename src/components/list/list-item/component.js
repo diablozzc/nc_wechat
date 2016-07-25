@@ -7,7 +7,8 @@ const ListItemComponent = {
   bindings:{
     itemData:'<',
     tpl:'@',
-    target:'<'
+    target:'<',
+    winWidth:'<'
   },
   template:require('./template.html')
 };

@@ -7,8 +7,9 @@
     <div class="list_image">
         <ul class="clearfix">
 
-            <li class="list_img_holder" style="background: none;" ng-repeat="cover in $ctrl.itemData.coverUrl">
-                <img ng-src="{{cover.value}}" style="opacity: 1;">
+            <li class="list_img_holder img-cover"
+                style="background-image:url({{cover.value}})"
+                ng-repeat="cover in $ctrl.itemData.coverUrl" ng-style="$ctrl.theHeight">
             </li>
         </ul>
     </div>

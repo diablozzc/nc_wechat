@@ -21,6 +21,7 @@ class SignUpController {
       activity:this.itemId
     };
     this.gender = [{key: '男', value: true}, {key: '女', value: false}];
+    this.mobileRegex =  /^1(?:3[0-9]|4[0-9]|5[012356789]|8[0123456789]|7[0678])\d{4}\d{4}$/;
   }
 
   

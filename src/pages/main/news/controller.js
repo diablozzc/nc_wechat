@@ -9,7 +9,8 @@ class NewsController {
     this.state = $state;
     this.stateParams = $stateParams;
     this.newsService = NewsService;
-
+    this.winWidth = window.innerWidth;
+    
 
   }
   $onInit() {
@@ -19,6 +20,7 @@ class NewsController {
     this.theColumnKey = 'column_' + this.stateParams.column;
     
     this.newsService.getList({columnKey:this.theColumnKey}).then((ret)=>{
+      console.log(ret);
       this.listOfNews = Object.assign([],ret);
     });
 

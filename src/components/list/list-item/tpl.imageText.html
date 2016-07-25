@@ -15,9 +15,8 @@
         </div>
 
     </div>
-    <div class="list_img_holder" style="vertical-align: middle; background: none;">
-        <img ng-src="{{$ctrl.itemData.coverUrl[0].value}}" style="opacity: 1;">
-
+    <div class="list_img_holder"
+         style="vertical-align: middle; background-image:url({{$ctrl.itemData.coverUrl[0].value}});" ng-style="$ctrl.theHeight">
     </div>
 
 </a>

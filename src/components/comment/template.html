@@ -35,7 +35,11 @@
 
     </li>
 </ul>
-<div style="padding-bottom: 17px;">
+<div style="padding-bottom: 17px;" ng-show="$ctrl.listData && $ctrl.listData.length>9">
     <button class="weui_btn weui_btn_default"
             style="color:#666;font-size:14px" ng-click="$ctrl.loadMoreComment()"> 加载更多评论 </button>
+</div>
+
+<div style="padding-bottom: 17px;" ng-show="$ctrl.listData && $ctrl.listData.length==0">
+   暂无评论
 </div>

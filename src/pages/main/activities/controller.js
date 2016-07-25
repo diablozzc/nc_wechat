@@ -9,6 +9,7 @@ class ActivitiesController {
     this.timeout = $timeout;
     this.state = $state;
     this.activityService = ActivityService;
+    this.winWidth = window.innerWidth;
   }
   $onInit() {
     this.scrollerHeight = document.documentElement.clientHeight - 46;
