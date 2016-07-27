@@ -1,24 +1,35 @@
-<div class="article-content-page">
+<div class="article-content-page2 wrapper">
+    <div class="sub-wrapper">
+        <div class="scroller">
 
-    <article-content the-article="theNews.theArticle"></article-content>
 
-    <comment list-data="theNews.listOfComment" id="article_comment" on-load-more="theNews.loadMoreComment()">
+            <article-content the-article="theNews.theArticle"></article-content>
 
-    </comment>
+            <comment list-data="theNews.listOfComment" id="article_comment" on-load-more="theNews.loadMoreComment()">
 
-    <bottom-bar on-click="theNews.showCommentForm()">
-        <right-btn>
-            <i class="fa fa-comments-o fa-2x" style="color:#555;"></i>
-            <span class="vux-badge comment-badge">{{theNews.theArticle.commentNum}}</span>
-        </right-btn>
-    </bottom-bar>
+            </comment>
 
-    <popup show="theNews.showPopup" height="140px" on-close-popup="theNews.onCloseComment()">
-        <comment-form on-cancel="theNews.onCloseComment()"
-                      on-submit="theNews.submitComment($event)"
-                      show="theNews.showPopup"></comment-form>
-    </popup>
+
+        </div>
+    </div>
+
+
 
 </div>
 
+
+<bottom-bar on-click="theNews.showCommentForm()">
+    <right-btn>
+        <i class="fa fa-comments-o fa-2x" style="color:#555;"></i>
+        <span class="vux-badge comment-badge">{{theNews.theArticle.commentNum}}</span>
+    </right-btn>
+</bottom-bar>
+
+<popup show="theNews.showPopup" height="140px" on-close-popup="theNews.onCloseComment()">
+    <comment-form on-cancel="theNews.onCloseComment()"
+                  on-submit="theNews.submitComment($event)"
+                  show="theNews.showPopup"></comment-form>
+</popup>
+
 <toast show="theNews.showHits">评论成功</toast>
+

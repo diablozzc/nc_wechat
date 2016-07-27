@@ -5,13 +5,17 @@ class NewsContentController {
   /*@ngInject*/
   constructor($scope,$element,$timeout,$state,$stateParams,$sce,NewsService,CommentService) {
     this.prev = $state.current.data.prev;
+    this.scope = $scope;
     this.sce = $sce;
     this.articleId = $stateParams.itemId;
     this.theColumnKey = 'column_' + $stateParams.column;
     this.newsService = NewsService;
     this.commentService = CommentService;
+
   }
   $onInit() {
+    // this.scope.$emit('hideList');
+
 
     this.showHits = false;
 

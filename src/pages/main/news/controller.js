@@ -10,17 +10,23 @@ class NewsController {
     this.stateParams = $stateParams;
     this.newsService = NewsService;
     this.winWidth = window.innerWidth;
+    this.showList = true;
+    
+    $scope.$on('hideList',(e,data)=>{
+      this.showList = false;
+    });
     
 
   }
   $onInit() {
     this.scrollerHeight = document.documentElement.clientHeight - 46;
-    
+
+
     this.listOfNews = [];
     this.theColumnKey = 'column_' + this.stateParams.column;
     
     this.newsService.getList({columnKey:this.theColumnKey}).then((ret)=>{
-      console.log(ret);
+      // console.log(ret);
       this.listOfNews = Object.assign([],ret);
     });
 

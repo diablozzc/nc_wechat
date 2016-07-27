@@ -1,5 +1,14 @@
-<div ng-show="$ctrl.show" ng-style="{height:$ctrl.height}" class="vux-popup">
-    <div ng-transclude>
+<div id="actionSheet_wrap">
+    <div class="weui_mask_transition" ng-class="{'weui_fade_toggle':$ctrl.show}"
+         ng-show="$ctrl.show"
+         id="mask"
+         style="display: block;" ng-click="$ctrl.closePopup()">
+
+    </div>
+    <div class="weui_actionsheet"
+         ng-class="{'weui_actionsheet_toggle':$ctrl.isiOS && $ctrl.show,'weui_actionsheet_toggle2':$ctrl.isAndroid && $ctrl.show}"
+         id="weui_actionsheet"
+         ng-transclude>
 
     </div>
 </div>

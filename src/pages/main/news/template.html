@@ -8,7 +8,7 @@
 <scroller class="bd"
           height="news.scrollerHeight"
           on-pull-up-loading="news.loadMoreNews()"
-          list-data="news.listOfNews">
+          list-data="news.listOfNews" ng-show="news.showList">
     <scroller-body>
         <list>
             <list-item ng-repeat="item in news.listOfNews"

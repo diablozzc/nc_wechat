@@ -6,16 +6,17 @@
 </action-bar>
 
 <div class="weui_panel weui_panel_access">
-    <div class="weui_panel_hd">南码头路街道 东三 工作人员</div>
+    <div class="weui_panel_hd">南码头路街道 东三居委 工作人员</div>
     <div class="weui_panel_bd">
-        <a class="weui_media_box weui_media_appmsg" href="javascript:;" ng-repeat="item in $ctrl.member_list">
+        <a class="weui_media_box weui_media_appmsg" href="tel:021{{item.tel}}" ng-repeat="item in $ctrl.member_list">
             <div class="weui_media_hd">
                 <img class="weui_media_appmsg_thumb" alt=""
                      ng-src="{{item.headImg}}">
             </div>
             <div class="weui_media_bd">
-                <h4 class="weui_media_title">{{item.title}}</h4>
+                <h4 class="weui_media_title">{{item.title}}(电话:{{item.tel}})</h4>
                 <p class="weui_media_desc">{{item.desc}}</p>
+                <p class="weui_media_desc">{{item.duty}}</p>
             </div>
         </a>
 

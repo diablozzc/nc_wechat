@@ -8,6 +8,7 @@ class ActivityContentController {
     this.sce = $sce;
     this.itemId = $stateParams.itemId;
     this.state = $state;
+    this.scope = $scope;
 
     this.theColumnKey = 'column_activities';
     this.activityService = ActivityService;

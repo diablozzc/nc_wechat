@@ -8,7 +8,6 @@ class PosterService {
     this.Models = Models;
     this.$q = $q;
     this.$state = $state;
-    // Moment.locale('zh_cn');
   }
   getPoster(param={}) {
     let p = Object.assign({},param);
@@ -23,7 +22,6 @@ class PosterService {
     this.getPoster({columnKey:columnKey}).then((ret)=>{
       let isShown = window.sessionStorage.getItem(`${columnKey}.poster.shown`);
 
-      console.log(isShown);
       if(ret.isShowPoster && !isShown){
         window.sessionStorage.setItem(`${columnKey}.poster.shown`,true);
         //Go to poster state with column key

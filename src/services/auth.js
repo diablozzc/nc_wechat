@@ -23,7 +23,6 @@ class AuthService {
     let link_hash = location.hash;
     let link_uri = /#!\/((.*)\?.*|(.*)\??.*)/.exec(link_hash);
     link_uri = angular.isUndefined(link_uri[2])?link_uri[3]:link_uri[2];
-    console.log(link_uri);
     let the_hash = /.*\?(.*)/.exec(link_hash);
 
     if(!the_hash){

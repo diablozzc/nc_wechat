@@ -11,7 +11,7 @@ class CommentFormController {
     this.comment_content = '';
   }
   $onChanges(changes) {
-    console.log(changes);
+    // console.log(changes);
   }
 
 
