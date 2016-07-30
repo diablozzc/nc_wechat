@@ -17,8 +17,8 @@
                                     <i class="fa fa-clock-o rich_media_meta_text"></i>
                                 </div>
                                 <div class="vux-flexbox-item" style="margin-left: 8px;">
-                                    <span class="flex-demo">{{theActivity.theActivity.startTimeText}} 至 {{theActivity.theActivity.endTimeText}}</span><br>
-                                    <span class="rich_media_meta_text">{{theActivity.theActivity.signupEndTimeText}}报名截止</span>
+                                    <span class="flex-demo">活动时间：{{theActivity.theActivity.startTimeText}} 至 {{theActivity.theActivity.endTimeText}}</span><br>
+                                    <span class="rich_media_meta_text">报名时间：{{theActivity.theActivity.signupStartTimeText}} 至 {{theActivity.theActivity.signupEndTimeText}}</span>
                                 </div>
                             </div>
 
@@ -72,8 +72,8 @@
 
 <bottom-bar>
     <middle-btn>
-        <button class="weui_btn" ng-class="{'weui_btn_primary':!theActivity.isSigned,'weui_btn_default weui_btn_disabled':theActivity.isSigned}"
-                ng-click="theActivity.goSignupForm()" ng-disabled="theActivity.isSigned"> {{theActivity.signText()}} </button>
+        <button class="weui_btn" ng-class="{'weui_btn_primary':theActivity.theState.enable,'weui_btn_default weui_btn_disabled':!theActivity.theState.enable}"
+                ng-click="theActivity.signUpAction()" ng-disabled="!theActivity.theState.enable"> {{theActivity.theState.showInfo}} </button>
     </middle-btn>
 
 </bottom-bar>

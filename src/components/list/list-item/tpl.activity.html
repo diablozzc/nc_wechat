@@ -18,18 +18,22 @@
                     <div class="vux-flexbox-item" style="margin-top: 8px;">
                         <span class="flex-demo">{{$ctrl.itemData.hoster}}</span>
                     </div>
-                    <div class="vux-flexbox-item" style="margin-top: 8px;">
-                        <span class="flex-demo"><i class="fa fa-clock-o icon-item"></i>{{$ctrl.itemData.startTimeText}}开始</span>
+                    <div class="vux-flexbox-item" style="margin-top: 8px;" ng-if="$ctrl.itemData.signupStartTime">
+                        <span class="flex-demo"><i class="fa fa-clock-o icon-item"></i>报名时间:{{$ctrl.itemData.signupStartTimeText}}至{{$ctrl.itemData.signupEndTimeText}}</span>
                     </div>
                     <div class="vux-flexbox-item" style="margin-top: 8px;">
-                        <span class="flex-demo"><i class="fa fa-map-marker icon-item"></i>{{$ctrl.itemData.location}}</span>
+                        <span class="flex-demo"><i class="fa fa-clock-o icon-item"></i>活动时间:{{$ctrl.itemData.startTimeText}}至{{$ctrl.itemData.endTimeText}}</span>
+                    </div>
+                    <div class="vux-flexbox-item" style="margin-top: 8px;">
+                        <span class="flex-demo"><i class="fa fa-map-marker icon-item"></i>地点:{{$ctrl.itemData.location}}</span>
                     </div>
                 </div>
 
 
             </div>
             <div class="vux-flexbox-item" style="margin-left: 8px; flex: 0 0 17.5%; text-align: center;">
-                <span class="src space">{{$ctrl.itemData.signNum}}人<br>报名</span>
+                <span class="src space" ng-if="$ctrl.itemData.signNum < $ctrl.itemData.signupTop">{{$ctrl.itemData.signNum}}人<br>报名</span>
+                <span class="src space" ng-if="$ctrl.itemData.signNum === $ctrl.itemData.signupTop">报名<br>已满</span>
             </div>
 
         </div>

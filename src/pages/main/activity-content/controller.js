@@ -18,14 +18,13 @@ class ActivityContentController {
     this.theActivity = {};
     this.signUpNum = 0;
     this.isSigned = false;
+    this.isEnable = false;
 
 
     this.activityService.getActivity(this.itemId).then((ret)=>{
-      console.log(ret);
       this.theActivity = Object.assign({},ret);
     });
-
-
+    
     this.listOfComment = [];
     this.listOfSignup = [];
 
@@ -41,8 +40,11 @@ class ActivityContentController {
       this.signUpNum = ret;
     });
 
-    this.activityService.isSigned(this.itemId).then((ret)=>{
-      this.isSigned = ret.data;
+    
+
+    this.activityService.getState(this.itemId).then((ret)=>{
+      this.theState = ret;
+      
     });
 
 
@@ -82,7 +84,7 @@ class ActivityContentController {
   }
 
   loadMoreSignup() {
-    console.log('load more signup');
+    // console.log('load more signup');
 
     let oldest_time = this.listOfSignup[this.listOfSignup.length-1].signupTimestamp;
 
@@ -101,6 +103,26 @@ class ActivityContentController {
 
   goSignupForm() {
     this.state.go('main.signup',{activityId:this.itemId});
+  }
+
+  signUpAction(){
+    console.log(this.theState);
+    if(this.theState.signup){
+      // 取消报名
+      this.activityService.cancelSignUp(this.itemId).then((ret)=>{
+        this.activityService.getState(this.itemId).then((ret)=>{
+          this.theState = ret;
+
+        });
+      });
+
+      this.activityService.signupList({id:this.itemId}).then((ret)=>{
+        this.listOfSignup = ret;
+      });
+
+    }else{
+      this.state.go('main.signup',{activityId:this.itemId});
+    }
   }
   
   signText() {

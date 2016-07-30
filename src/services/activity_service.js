@@ -21,6 +21,9 @@ class ActivityService {
       _.forEach(response,(item)=>{
         item.publishTimestamp = Moment(item.publishTime).valueOf();
         item.startTimeText = Moment(item.startTime).format('YYYY年MM月DD日');
+        item.endTimeText = Moment(item.endTime).format('MM月DD日');
+        item.signupStartTimeText = Moment(item.signupStartTime).format('YYYY年MM月DD日');
+        item.signupEndTimeText = Moment(item.signupEndTime).format('MM月DD日');
       });
 
       return response;
@@ -43,7 +46,21 @@ class ActivityService {
       response.publishTimeText = Moment(response.publishTime).format('M月D日');
       response.startTimeText = `${Moment(response.startTime).format('M月D日')}（${Moment.weekdaysShort(Moment(response.startTime).day())}）${Moment(response.startTime).format('HH:mm')}`;
       response.endTimeText = `${Moment(response.endTime).format('M月D日')}（${Moment.weekdaysShort(Moment(response.endTime).day())}）${Moment(response.endTime).format('HH:mm')}`;
+      response.signupStartTimeText = Moment(response.signupStartTime).format('M月D号');
       response.signupEndTimeText = Moment(response.signupEndTime).format('M月D号');
+      return response;
+    });
+  }
+  
+  getState(id){
+    return this.Models.init('ActivityState').actions('get',{},{id:id}).then((response)=>{
+      return response;
+    });
+  }
+  
+  cancelSignUp(id){
+    return this.Models.init('SignupList').actions('cancel',{id:id}).then((response)=>{
+
       return response;
     });
   }

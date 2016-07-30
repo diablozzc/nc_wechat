@@ -6,7 +6,8 @@ class Config {
   constructor() {
     this.config_data = {
       global:{
-        server:'http://nc.mrshare.cn/api/'
+        server:'http://d3.shhuason.com/api/'
+        // server:'http://nc.mrshare.cn/api/'
       },
       data:{
         resources:{
@@ -44,7 +45,8 @@ class Config {
           'SignupList':{
             name:'SignupList',uri:'activities/:id/wx/signupinfo',actions:[
               {action:'list',method:'GET',isArray:true},
-              {action:'signup',method:'POST',isArray:false,requestType:'json'}
+              {action:'signup',method:'POST',isArray:false,requestType:'json'},
+              {action:'cancel',method:'DELETE',isArray:false,requestType:'json'}
             ],serverKey:'server'
           },
           'SignupNum':{
@@ -60,6 +62,11 @@ class Config {
           'MyActivities':{
             name:'MyActivities',uri:'activities/wx/signupinfo',actions:[
               {action:'list',method:'GET',isArray:true}
+            ],serverKey:'server'
+          },
+          'ActivityState':{
+            name:'',uri:'activities/:id/wx/signupinfo/status',actions:[
+              {action:'get',method:'GET',isArray:false}
             ],serverKey:'server'
           },
           'Oauth2':{
