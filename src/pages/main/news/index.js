@@ -19,7 +19,7 @@ const news = angular
     'ngInject';
     $stateProvider
       .state('main.news',{
-        url:'/{column:news|notices|service_guide|convenience}?s',
+        url:'/{column:news|notices|convenience|unit|shop}?s',
         component:'news',
         resolve:{
           poster: (PosterService,$stateParams) => {

@@ -96,8 +96,11 @@ class Config {
           columns:[
             {val:'column_news',name:'小区新闻',state:'main.news',param:{column:'news'}},
             {val:'column_notices',name:'各类通知',state:'main.news',param:{column:'notices'}},
-            {val:'column_service_guide',name:'办事指南',state:'main.news',param:{column:'service_guide'}},
+            // {val:'column_service_guide',name:'办事指南',state:'main.news',param:{column:'service_guide'}},
             {val:'column_convenience',name:'便民服务',state:'main.news',param:{column:'convenience'}},
+            {val:'column_unit',name:'驻区单位',state:'main.news',param:{column:'unit'}},
+            {val:'column_shop',name:'周边商家',state:'main.news',param:{column:'shop'}},
+
             {val:'column_activities',name:'活动报名',state:'main.activities',param:{}},
             {val:'column_community',name:'小区概况',state:'main.community',param:{}},
             {val:'column_feedback',name:'我有话说',state:'main.feedback',param:{}},

@@ -20,7 +20,7 @@ const news_search = angular
     'ngInject';
     $stateProvider
       .state('main.news_search',{
-        url:'/{column:news|notices|service_guide|convenience}/search?s',
+        url:'/{column:news|notices|convenience|unit|shop}/search?s',
         component:'newsSearch',
         data:{
           prev:'main.news'
