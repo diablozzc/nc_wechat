@@ -12,8 +12,7 @@ class AuthService {
     this.$stateParams = $stateParams;
   }
   goOauth(uri){
-    this.oauth_link = `http://d3.shhuason.com/api/oauth2?uri=/${uri}&type=router`;
-    // this.oauth_link = `http://nc.mrshare.cn/api/oauth2?uri=/${uri}&type=router`;
+    this.oauth_link = `http://${window.nc.domain}/api/oauth2?uri=/${uri}&type=router`;
     window.location.href = this.oauth_link;
 
   }

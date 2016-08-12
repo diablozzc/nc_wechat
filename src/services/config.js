@@ -6,8 +6,7 @@ class Config {
   constructor() {
     this.config_data = {
       global:{
-        server:'http://d3.shhuason.com/api/'
-        // server:'http://nc.mrshare.cn/api/'
+        server:`http://${window.nc.domain}/api/`
       },
       data:{
         resources:{
