@@ -14,6 +14,7 @@ import SignUp from './sign-up';
 import Feedback from './feedback';
 import MySignUp from './my-sign-up';
 import MyReply from './my-reply';
+import AllReply from './all-reply';
 import Community from './community';
 import Contact from './contact';
 import PosterPage from './poster';
@@ -35,6 +36,7 @@ const main = angular
     ,Feedback
     ,MySignUp
     ,MyReply
+    ,AllReply
     ,Community
     ,Contact
     ,PosterPage

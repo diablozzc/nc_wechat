@@ -15,7 +15,10 @@
         <h1 class="title">{{$ctrl.theArticle.title}}</h1>
         <div class="rich_media_meta_list" ng-transclude="metaInfo">
             <em id="post-date" class="rich_media_meta rich_media_meta_text">{{$ctrl.theArticle.publishTime}}</em>
-            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">{{$ctrl.theArticle.source}}</span>
+            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">
+                {{$ctrl.theArticle.source}}
+                <span ng-if="$ctrl.theArticle.showReadNum">&nbsp;|&nbsp;&nbsp;{{$ctrl.theArticle.readNum}}阅读</span>
+            </span>
         </div>
         <div ng-transclude="extend">
 

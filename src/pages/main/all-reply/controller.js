@@ -1,24 +1,18 @@
 /**
  * Created by zhangzhichao on 16/6/30.
  */
-
-class FeedbackController {
+  
+class AllReplyController {
   /*@ngInject*/
-  constructor($scope,$state,$stateParams,FeedbackService) {
+  constructor($scope,$element,$timeout,$state,FeedbackService) {
     this.scope = $scope;
+    this.timeout = $timeout;
     this.state = $state;
-    this.stateParams = $stateParams;
     this.feedbackService = FeedbackService;
-
-
   }
   $onInit() {
-    this.theFeedback = {};
-    this.showHits = false;
-    this.mobileRegex =  /^1(?:3[0-9]|4[0-9]|5[012356789]|8[0123456789]|7[0678])\d{4}\d{4}$/;
-
-    // 回复列表
-
+    this.scrollerHeight = document.documentElement.clientHeight - 46;
+    this.title = '居委回复';
     this.listOfReply = [];
     // this.pullupStatus = 'default';
     // this.targetRouter = 'main.mysignup.activity_content';
@@ -27,24 +21,7 @@ class FeedbackController {
       this.listOfReply = Object.assign([],ret);
     });
     this.showLoadMore = true;
-
-
   }
-
-  feedback(){
-
-    const data = Object.assign({},this.theFeedback);
-    this.reset();
-
-    this.feedbackService.feedback(data).then((ret)=>{
-      this.showHits = true;
-    });
-  }
-
-  reset() {
-    this.theFeedback = {};
-  }
-
 
   loadMore(){
 
@@ -58,10 +35,11 @@ class FeedbackController {
       }
     });
 
-
+    
   }
-  
+
 
 }
 
-export default FeedbackController;
+
+export default AllReplyController;

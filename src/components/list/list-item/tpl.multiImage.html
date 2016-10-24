@@ -19,7 +19,7 @@
 
         <span class="src space">{{$ctrl.itemData.source}}</span>
         <span class="time">{{$ctrl.itemData.publishTime}}</span>
-
+        <span class="readNum" ng-if="$ctrl.itemData.showReadNum">&nbsp;| {{$ctrl.itemData.readNum}}阅读</span>
     </div>
 
 </a>

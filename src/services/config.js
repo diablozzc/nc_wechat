@@ -80,6 +80,11 @@ class Config {
               {action:'submit',method:'POST',isArray:false,requestType:'json'}
             ],serverKey:'server'
           },
+          'Feedbacks/audit':{
+            name:'Feedbacks/audit',uri:'feedbacks/audit',actions:[
+              {action:'get',method:'GET',isArray:true},
+            ],serverKey:'server'
+          },
           'Poster':{
             name:'Poster',uri:'columns/:columnKey/posters',actions:[
               {action:'get',method:'GET',isArray:false}

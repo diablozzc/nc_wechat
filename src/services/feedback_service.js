@@ -30,6 +30,27 @@ class FeedbackService {
       return response;
     });
   }
+
+  getAllFeedbacks(param={}) {
+    let p = Object.assign({},param);
+
+    return this.Models.init('Feedbacks/audit').actions('get',{},p).then((response)=>{
+
+      _.forEach(response,(item)=>{
+        item.sayTimeText = Moment(item.sayTime).fromNow();
+        item.sayTimestamp = Moment(item.sayTime).valueOf();
+
+        if(item.replies.length>0){
+          _.forEach(item.replies,(reply)=>{
+            reply.replyTimeText = Moment(reply.replyTime).fromNow();
+          })
+        }
+
+      });
+      return response;
+    });
+  }
+
   
 
   feedback(param={}){
