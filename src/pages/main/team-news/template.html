@@ -1,0 +1,28 @@
+<action-bar title="团队新闻">
+    <!--<left-btn></left-btn>-->
+    <right-btn></right-btn>
+</action-bar>
+
+<scroller class="bd"
+          height="teamNews.scrollerHeight"
+          on-pull-up-loading="teamNews.loadMoreNews()"
+          list-data="teamNews.listOfNews" ng-show="teamNews.showList">
+    <scroller-body>
+        <team-item item-data="teamNews.theTeam"></team-item>
+        <list>
+            <list-item ng-repeat="item in teamNews.listOfNews"
+                       item-data="item"
+                       tpl="{{item.showType}}"
+                       target="teamNews.targetRouter"
+                       win-width="teamNews.winWidth"></list-item>
+        </list>
+        <div class="vux-center" style="padding: 20px; color: #ccc;" ng-if="!teamNews.listOfNews.length">
+        <p>暂无团队新闻</p>
+        </div>
+    </scroller-body>
+</scroller>
+
+<div ui-view>
+
+</div>
+

@@ -94,6 +94,22 @@ class Config {
             name:'Community',uri:'columns/communities',actions:[
               {action:'get',method:'GET',isArray:false}
             ],serverKey:'server'
+          },
+          'Teams': {
+            name: 'Teams', uri:'teams/user/activities', actions: [
+              {action:'list',method:'GET',isArray:true}
+            ], serverKey: 'server'
+          },
+          'Team': {
+            name: 'Team', uri: 'teams/user/activities/:activityId', actions: [
+              {action:'get',method:'GET',isArray:false}
+            ], serverKey: 'server'
+          },
+          'JoinTeam': {
+            name: 'JoinTeam', uri: 'teams', actions: [
+              { action:'join',method:'POST',isArray:false},
+              { action:'quit',method:'DELETE',isArray:false,requestType:'json' }
+            ], serverKey: 'server'
           }
         },
         kv:{

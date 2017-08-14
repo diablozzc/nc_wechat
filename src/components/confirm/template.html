@@ -1,0 +1,8 @@
+<pop-dialog class="weui_dialog_confirm" show="confirm.show">
+    <div class="weui_dialog_hd"><strong class="weui_dialog_title">{{confirm.title}}</strong></div>
+    <div class="weui_dialog_bd" ng-transclude></div>
+    <div class="weui_dialog_ft">
+        <a href="javascript:;" class="weui_btn_dialog default" ng-click="confirm.cancel()">{{confirm.cancelText}}</a>
+        <a href="javascript:;" class="weui_btn_dialog primary" ng-click="confirm.confirm()">{{confirm.confirmText}}</a>
+    </div>
+</pop-dialog>

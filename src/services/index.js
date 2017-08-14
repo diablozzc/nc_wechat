@@ -11,6 +11,7 @@ import CommentService from './comments';
 import KeywordsService from './keywords';
 import FeedbackService from './feedback_service';
 import PosterService from './poster_service';
+import TeamService from './team_service'
 
 const services = angular
   .module('Services',[
@@ -24,6 +25,7 @@ const services = angular
   .service('KeywordsService',KeywordsService)
   .service('FeedbackService',FeedbackService)
   .service('PosterService',PosterService)
+  .service('TeamService',TeamService)
   .name;
 
 

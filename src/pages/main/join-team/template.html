@@ -1,0 +1,49 @@
+<action-bar title="加入团队" fixed="true">
+    <right-btn>
+    </right-btn>
+</action-bar>
+<div class="article-content-page2 wrapper" ng-style="$ctrl.scrollerStyle">
+    <div class="sub-wrapper">
+        <div class="scroller">
+            <div class="current-team">
+                {{$ctrl.team.name}}
+            </div>
+            <form name="teamUserForm" ng-submit="$ctrl.join()">
+                <div class="weui_cells weui_cells_form">
+                    <div class="weui_cell">
+                        <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <input class="weui_input" type="text" placeholder="请输入姓名" ng-model="$ctrl.teamUser.name" ng-required="true">
+                        </div>
+                    </div>
+                    <div class="weui_cell">
+                        <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <input class="weui_input" type="tel" placeholder="请输入手机号码" ng-model="$ctrl.teamUser.mobile" ng-pattern="$ctrl.mobileRegex">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weui_cells_title">地址</div>
+                <div class="weui_cells">
+                    <xtextarea max="200"
+                               value="$ctrl.teamUser.addr"
+                               name=""
+                               placeholder="通信地址"
+                               rows="3"
+                               height="50px"></xtextarea>
+                </div>
+
+                <div class="weui_btn_area">
+                    <button class="weui_btn weui_btn_primary"
+                            type="submit"
+                            ng-disabled="teamUserForm.$invalid"
+                            ng-class="{'weui_btn_disabled':teamUserForm.$invalid}">提交加入</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<toast show="$ctrl.showHits">加入成功</toast>

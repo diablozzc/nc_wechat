@@ -1,0 +1,35 @@
+<div class="article-content-page2 wrapper">
+    <div class="sub-wrapper">
+        <div class="scroller">
+
+
+            <article-content the-article="$ctrl.theArticle"></article-content>
+
+            <comment list-data="$ctrl.listOfComment" id="article_comment" on-load-more="$ctrl.loadMoreComment()">
+
+            </comment>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<bottom-bar on-click="$ctrl.showCommentForm()">
+    <right-btn>
+        <i class="fa fa-comments-o fa-2x" style="color:#555;"></i>
+        <span class="vux-badge comment-badge">{{$ctrl.theArticle.commentNum}}</span>
+    </right-btn>
+</bottom-bar>
+
+<popup show="$ctrl.showPopup" height="140px" on-close-popup="$ctrl.onCloseComment()">
+    <comment-form on-cancel="$ctrl.onCloseComment()"
+                  on-submit="$ctrl.submitComment($event)"
+                  show="$ctrl.showPopup"></comment-form>
+</popup>
+
+<toast show="$ctrl.showHits">评论成功</toast>
+

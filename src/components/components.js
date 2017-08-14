@@ -19,6 +19,10 @@ import uploaderWechat from './uploader-wechat';
 import toast from './toast';
 import poster from './poster';
 import loading from './loading';
+import flexbox from './flexbox';
+import teamItem from './team-item';
+import dialog from './dialog';
+import confirm from './confirm';
 
 const components = angular
   .module('app.components', [
@@ -38,8 +42,11 @@ const components = angular
     uploaderWechat,
     toast,
     poster,
-    loading
-    
+    loading,
+    flexbox,
+    teamItem,
+    dialog,
+    confirm
   ])
   .name;
 

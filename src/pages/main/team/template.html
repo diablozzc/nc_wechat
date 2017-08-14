@@ -1,0 +1,15 @@
+<action-bar title="活动团队">
+    <left-btn></left-btn>
+    <right-btn></right-btn>
+</action-bar>
+
+<scroller class="bd"
+          height="team.scrollerHeight"
+          on-pull-up-loading="team.loadMoreTeam()"
+          list-data="team.teams">
+    <scroller-body>
+        <team-item item-data="item" ng-repeat="item in team.teams"></team-item>
+    </scroller-body>
+</scroller>
+
+

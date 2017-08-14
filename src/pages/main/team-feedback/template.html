@@ -1,0 +1,113 @@
+<action-bar title="我有话说" fixed="true">
+    <right-btn>
+    </right-btn>
+</action-bar>
+<div class="article-content-page2 wrapper" ng-style="$ctrl.scrollerStyle">
+    <div class="sub-wrapper">
+        <div class="scroller">
+            <form name="feedbackForm" ng-submit="$ctrl.feedback()">
+                <div class="weui_cells_title">我要说:</div>
+                <div class="weui_cells">
+                    <xtextarea max="200"
+                               value="$ctrl.theFeedback.content"
+                               name="feedback_content"
+                               placeholder="幸福家园，和谐东三！欢迎您畅所欲言！"
+                               rows="3"
+                               height="50px"
+                               required="true"></xtextarea>
+                </div>
+
+                <div class="weui_cells_title">手机号:</div>
+                <div class="weui_cells weui_cells_form">
+                    <div class="weui_cell">
+                        <!--<div class="weui_cell_hd"><label class="weui_label">手机号</label></div>-->
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <input class="weui_input" type="number" placeholder="请输入手机号码" ng-model="$ctrl.theFeedback.mobile" ng-pattern="$ctrl.mobileRegex">
+                        </div>
+                    </div>
+                </div>
+
+                <uploader-wechat result="$ctrl.theFeedback.image" ></uploader-wechat>
+
+
+                <div class="weui_btn_area">
+                    <button class="weui_btn weui_btn_primary"
+                            type="submit"
+                            ng-disabled="feedbackForm.$invalid"
+                            ng-class="{'weui_btn_disabled':feedbackForm.$invalid}">提交</button>
+                </div>
+            </form>
+
+            <div class="weui_cells_title" style="
+    position: relative;
+    margin: 2em 0 1em 0;
+">
+                <hr style="
+    border: none;
+    border-top: 1px dotted #ccc;
+">
+                <div style="
+    position: relative;
+    margin: 0 auto;
+    width: 70px;
+    text-align: center;
+    top: -12px;
+    background: #FBF9FE;
+">发言精选</div>
+            </div>
+
+            <div class="weui_cells">
+                <div class="weui_cell" ng-if="$ctrl.listOfReply.length">
+                    <ul class="discuss_list">
+                        <li class="discuss_item" ng-repeat="comment in $ctrl.listOfReply">
+                            <div class="discuss_opr">
+                    <span class="media_tool_meta tips_global meta_praise praised">
+                        <span class="praise_num">{{comment.sayTimeText}}</span>
+                    </span>
+                            </div>
+
+                            <div class="user_info">
+                                <strong class="nickname">{{comment.nickName}}</strong>
+                                <img class="avatar" ng-src="{{comment.headImg}}">
+                            </div>
+
+                            <div class="discuss_message">
+                                <span class="discuss_status"></span>
+                                <div class="discuss_message_content">{{comment.content}}</div>
+                            </div>
+                            <p class="discuss_extra_info">{{comment.commentTimeText}}
+
+                                <!--<a v-if="comment.is_from_me" class="discuss_del js_del" href="javascript:;" data-my-id="<#=my_id#>" data-content-id="<#=content_id#>">删除</a>-->
+                            </p>
+
+                            <div class="reply_result" ng-if="comment.replies && comment.replies.length"
+                                 ng-repeat="reply in comment.replies">
+                                <div class="nickname">{{reply.name}}</div>
+                                <div class="discuss_message">
+                                    <div class="discuss_message_content">{{reply.content}}</div>
+                                </div>
+                                <p class="discuss_extra_info">{{reply.replyTimeText}}</p>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </div>
+                <div style="padding:0 17px 17px 17px" ng-if="$ctrl.showLoadMore && $ctrl.listOfReply.length">
+                    <button class="weui_btn weui_btn_default"
+                            style="color:#666;font-size:14px"
+                            ng-click="$ctrl.loadMore()"> 加载更多
+                    </button>
+                </div>
+                <div class="no-reply" ng-if="!$ctrl.listOfReply.length">
+                    <span>暂无留言</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<toast show="$ctrl.showHits">提交成功</toast>

@@ -18,6 +18,11 @@ import AllReply from './all-reply';
 import Community from './community';
 import Contact from './contact';
 import PosterPage from './poster';
+import Team from './team';
+import TeamNews from './team-news';
+import TeamNewsContent from './team-news-content';
+import TeamFeedback from './team-feedback';
+import JoinTeam from './join-team';
 
 import Services from '../../services';
 import CustomHttpHeader from '../../services/custom_header';
@@ -40,6 +45,11 @@ const main = angular
     ,Community
     ,Contact
     ,PosterPage
+    ,Team
+    ,TeamNews
+    ,TeamNewsContent
+    ,TeamFeedback
+    ,JoinTeam
     ,Services
   ])
   .component('main',MainComponent)

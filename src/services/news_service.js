@@ -16,7 +16,6 @@ class NewsService {
     // p.columnKey = 'column_news';
     
     return this.Models.init('Article').actions('list',{},p).then((response)=>{
-      
       _.forEach(response,(item)=>{
         item.publishTime = Moment(item.publishTime).fromNow();
         if(item.showType==='multiImage' && item.coverUrl.length<3){
@@ -24,10 +23,7 @@ class NewsService {
             item.coverUrl.push({value:''});
           }
         }
-        
-        
       });
-      
       return response;
     });
   }

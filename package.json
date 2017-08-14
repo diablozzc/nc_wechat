@@ -33,16 +33,16 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "angular": "^1.5.7",
-    "angular-resource": "^1.5.7",
-    "angular-sanitize": "^1.5.7",
-    "angular-animate": "^1.5.7",
-    "angular-ui-router": "^1.0.0-alpha",
-    "font-awesome": "^4.6.3",
-    "lodash": "^4.13.1",
-    "moment": "^2.14.1",
-    "query-string": "^4.2.2",
-    "vux-xscroll": "^3.1.5",
-    "xscroll": "^3.1.2"
+    "angular": "1.5.8",
+    "angular-resource": "1.5.8",
+    "angular-sanitize": "1.5.8",
+    "angular-animate": "1.5.8",
+    "angular-ui-router": "1.0.0",
+    "font-awesome": "4.6.3",
+    "lodash": "4.13.1",
+    "moment": "2.14.1",
+    "query-string": "4.2.2",
+    "vux-xscroll": "3.1.5",
+    "xscroll": "3.1.2"
   }
 }
