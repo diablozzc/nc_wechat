@@ -15,19 +15,19 @@
                     <div>{{$ctrl.itemData.description}}</div>
                 </flexbox-item>
                 <flexbox-item span="{{1/3}}">
-                    <div>
+                    <div ng-if="$ctrl.isOnList()" class="button-box">
+                        <span class="weui_btn weui_btn_default weui_btn_mini action-btn" ng-click="$ctrl.goTeamNews()">了解我们</span>
+                    </div>
+                    <div class="button-box">
                         <span class="weui_btn weui_btn_default weui_btn_mini action-btn" ng-click="$ctrl.quitConfirm=true" ng-if="$ctrl.itemData.joinedStatus === 'ADUTIED'">退出</span>
                         <span class="weui_btn weui_btn_primary weui_btn_mini action-btn" ng-click="$ctrl.goJoinTeam()" ng-if="!$ctrl.itemData.joined">加入我们</span>
                         <span class="weui_btn weui_btn_primary weui_btn_mini action-btn weui_btn_disabled" ng-if="$ctrl.itemData.joinedStatus === 'NEW'">待审核</span>
                         <span class="weui_btn weui_btn_default weui_btn_mini action-btn" ng-click="$ctrl.rejoin()" ng-if="$ctrl.itemData.joinedStatus === 'REJECTED'">已拒绝</span>
                     </div>
-                    <div ng-if="$ctrl.isOnList()">
-                        <span class="weui_btn weui_btn_default weui_btn_mini action-btn" ng-click="$ctrl.goTeamNews()">了解我们</span>
-                    </div>
-                    <div ng-if="!$ctrl.isOnList() && $ctrl.itemData.mobile">
+                    <div ng-if="!$ctrl.isOnList() && $ctrl.itemData.mobile" class="button-box">
                         <a class="weui_btn weui_btn_default weui_btn_mini action-btn" href="tel:{{$ctrl.itemData.mobile}}">联系电话</a>
                     </div>
-                    <div ng-if="!$ctrl.isOnList()">
+                    <div ng-if="!$ctrl.isOnList()" class="button-box">
                         <span class="weui_btn weui_btn_default weui_btn_mini action-btn" ng-click="$ctrl.goTeamFeedback()">我有话说</span>
                     </div>
                 </flexbox-item>
